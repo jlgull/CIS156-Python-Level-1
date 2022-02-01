@@ -3,7 +3,20 @@
 # Author: Jonathan Heard
 # Work for CIS156, Spring 2022, based on zyBook, CIS156: Python Programming: Level 1
 #
-# This is a sample Python script, built to follow along with introductory video.
+# Ch 3 Programming Assignment, Part B
+
+"""
+Create a program named family.py with a dictionary of names and ages for a family of at least four people;
+    this may be your family or a fictional family (such as the Simpsons).
+    Print out the dictionary.
+    Then, print just the age of the 2nd person in the dictionary.
+    Finally, add an entry for "Tim" with the age 46, and print the full dictionary again.
+
+Sample Output:
+
+
+"""
+
 
 """ Create a program to prompt user for a name and store it in a variable
     The request an age for the user and save it in a variable. """
