@@ -2,6 +2,7 @@
 #
 # Author: Jonathan Heard
 # Work for CIS156, Spring 2022, based on zyBook, CIS156: Python Programming: Level 1
+# Program name: family.py
 #
 # Ch 3 Programming Assignment, Part B
 
