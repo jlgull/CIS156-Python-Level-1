@@ -13,29 +13,43 @@ Create a program named family.py with a dictionary of names and ages for a famil
     Then, print just the age of the 2nd person in the dictionary.
     Finally, add an entry for "Tim" with the age 46, and print the full dictionary again.
 
-Sample Output:
-
-
 """
 
 
-""" Create a program to prompt user for a name and store it in a variable
-    The request an age for the user and save it in a variable. """
-
-""" variable list,
-    first_name: for user name
+""" 
+Create a program named family.py with a dictionary of names and ages for a family of at least four people;
+    this may be your family or a fictional family (such as the Simpsons).
+    
+    variable list,
+    family_dict - Dictionary to hold family names and ages
     age: for user age
-    new_age for age 10 years in the future """
+    new_age for age 10 years in the future 
 
-first_name = input('Please enter your first name: ')
-age = int(input('Please enter your age: '))
+"""
 
-# Print the users name
+# Create empty dictionary
 
-print('\nHello', first_name, ', it is great to meet you!')
+# family_dict = dict()
 
-# Calculate a new varialbel with the users age in 10 years and include it in a message.
+# Put fictional family in the dictionary, include name and age
 
-new_age = age + 10
+family_dict = {
+    "Samson": 44,
+    "Jason": 42,
+    "Collin": 14,
+    "Lucas": 11
+    }
 
-print('\tDid you realize that you will be', new_age, 'years old, in 10 years?')
+# Print out the dictionary.
+
+print("\n", family_dict)
+
+# Then, print just the age of the 2nd person in the dictionary.
+
+print("\nJason is", family_dict["Jason"], "years old.")
+
+# Add an entry for "Tim" with the age 46, and print the full dictionary again.
+
+family_dict["Tim"] = 46
+
+print("\n", family_dict)
