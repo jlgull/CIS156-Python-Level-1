@@ -1,7 +1,9 @@
 #! / bin / python3
 #
 # Author: Jonathan Heard
-# Work for CIS156, Spring 2022, based on zyBook, CIS156: Python Programming: Level 1
+# Instructor: Tim McMichael
+# Course: CIS156, Section 36323
+# Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
 # Program name: family.py
 #
 # Ch 3 Programming Assignment, Part B

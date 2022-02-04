@@ -1,7 +1,9 @@
 #! / bin / python3
 #
 # Author: Jonathan Heard
-# Work for CIS156, Spring 2022, based on zyBook, CIS156: Python Programming: Level 1
+# Instructor: Tim McMichael
+# Course: CIS156, Section 36323
+# Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
 #
 # Program name: name.py
 #
@@ -39,7 +41,7 @@ last_name = input()
 
 full_name = first_name + " " + last_name
 
-print("\nHello", full_name, "', it's great to meet you!")
+print("\nHello", full_name, ", it's great to meet you!")
 
 # Output the length of the full name
 
@@ -47,13 +49,13 @@ print("\n\tThe length of your full name is:", len(full_name), "characters long."
 
 # Output the user's initials (first letter in the first name and first letter in the last name)
 
-print("\tYour initials are:", first_name[0] + last_name[0])
+print("\n\tYour initials are:", first_name[0] + last_name[0])
 
 # Output the fourth letter in the first name
 
 if len(first_name) < 4:
-    print("\nThere is no 4th letter in your first name.")
+    print("\n", first_name, ", there is no 4th letter in your first name.")
 else:
-    print("\tThe 4th letter in your first name is:", first_name[3])
+    print("\t", first_name, ", the 4th letter in your first name is:", first_name[3])
 
 # End of program
