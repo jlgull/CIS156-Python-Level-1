@@ -21,19 +21,17 @@ Create a program named family.py with a dictionary of names and ages for a famil
     this may be your family or a fictional family (such as the Simpsons).
     
     variable list,
-    family_dict - Dictionary to hold family names and ages
-    age: for user age
-    new_age for age 10 years in the future 
-
+    fictional_family - Dictionary to hold family names and ages
+   
 """
 
 # Create empty dictionary
 
-# family_dict = dict()
+fictional_family = dict()
 
 # Put fictional family in the dictionary, include name and age
 
-family_dict = {
+fictional_family = {
     "Samson": 44,
     "Jason": 42,
     "Collin": 14,
@@ -42,14 +40,14 @@ family_dict = {
 
 # Print out the dictionary.
 
-print("\n", family_dict)
+print("\n", fictional_family)
 
 # Then, print just the age of the 2nd person in the dictionary.
 
-print("\nJason is", family_dict["Jason"], "years old.")
+print("\nJason is", fictional_family["Jason"], "years old.")
 
 # Add an entry for "Tim" with the age 46, and print the full dictionary again.
 
-family_dict["Tim"] = 46
+fictional_family["Tim"] = 46
 
-print("\n", family_dict)
+print("\n", fictional_family)
