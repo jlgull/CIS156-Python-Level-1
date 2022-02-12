@@ -99,6 +99,8 @@ while True:
 #       Hosts earn $12/hour for the first 2 years, then go up to $13.50/hour
 #       Kitchen staff make $15/hour for the first year, then go to $18/hour
 #
+#       Using ternary operations to reduce the lines of code.
+#
 # Set wage rate for Wait Staff
 
 if job == "W":
@@ -115,10 +117,10 @@ elif job == "H":
 else:
     wage_rate = 18 if (years_employed > 1) else 15
 
-# Print out the information gathered and the gross pay
+# Print out the information gathered and the gross pay calculation
 
 print("\n", employee_first_name, "your entered job code was", job, "which is for", job_title_dic[job], ".")
-print("\tYou have worked here", years_employed, f"years and worked {hours_worked:.2f} hours last week.")
+print("\tYou have worked here", years_employed, f"years and last week you worked {hours_worked:.2f} hours.")
 print(f"\tYour hourly wage rate is ${wage_rate:.2f} and your gross pay is ${hours_worked * wage_rate:.2f}")
 
 

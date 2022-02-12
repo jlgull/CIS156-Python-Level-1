@@ -35,12 +35,14 @@ Based on the input, use branching to recommend appropriate service plan options:
 """
 Variable List
 
+String Variables:
+service_plans   - dictionary variable hold the various plans and their costs
+plan            - holds the plan selected by the program for the user
+
+Integer numbers:
 talk_minutes    - holds the number of minute the customer estimates they need
 text_messages   - holds the number of text messages the customer estimates they need
 data_gbytes     - holds the number of gigabytes of data the customer estimates they need
-
-service_plans   - dictionary variable hold the various plans and their costs
-plan            - holds the plan selected by the program for the user
   
 """
 
@@ -54,9 +56,6 @@ service_plans = {
     "A": 49, "B": 55, "C": 61, "D": 70, "E": 79, "F": 87
     }
 
-# Test print of the service plan information.
-# print(service_plans)
-
 # Prompt the user to input the following information:
 #
 #     Maximum number of "talk" minutes
@@ -64,7 +63,7 @@ service_plans = {
 #     Maximum amount of data, in gigabytes.
 
 print("\nWelcome to the EMobile Phones plan selection tool.")
-print("\nBased on your answers to a few simple question,")
+print("\nBased on your answers to three simple question,")
 print("\tan appropriate plan will be suggested.")
 
 talk_minutes = int(input("\nFirst, enter your estimated number of talk minutes per month: "))
@@ -73,9 +72,10 @@ data_gbytes =   int(input("\nFinally, your estimated data usage in GB (gigabytes
 
 # Display the data entered
 
-print("\nYou entered", talk_minutes, "as estimated talk minutes.")
-print("You entered", text_messages, "as estimated text messages.")
-print("You entered", data_gbytes, "as estimated data usage, in GBs.")
+print("\nYou entered:")
+print("\t", talk_minutes, "as your estimated talk minutes.")
+print("\t", text_messages, "as your estimated text messages.")
+print("\t", data_gbytes, "as your estimated data usage, in GBs.")
 
 """
 Based on the input, use branching to recommend appropriate service plan options:
@@ -97,8 +97,10 @@ Based on the input, use branching to recommend appropriate service plan options:
 if data_gbytes == 0:
         if talk_minutes < 500:
             plan = "B" if (text_messages > 0) else "A"
+
         else:
             plan = "D" if (text_messages >= 100) else "C"
+
 else:
     plan = "E" if (data_gbytes < 3) else "F"
 
