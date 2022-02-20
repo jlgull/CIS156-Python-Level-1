@@ -23,7 +23,7 @@ and just pick a number to be guessed.
 
 """
 #
-# Import any required external programs
+# Import required module files
 #
 
 import random
@@ -112,8 +112,9 @@ while play_again != "N":
     # Set goal to something larger that ending number to ensure that play starts.
     guess = end_num * 355 / 113   # Note, 355/113 is a fair approximation of pi!!
 
-    # Generate the random number (integer) using the randint function.
-    #   Base the random number on the starting and ending numbers.
+    # Generate the random number (integer) using the random module object, randint.
+    #   The random number used the starting and ending numbers, to determine the range of
+    #       the random number generated.
     random_goal = random.randint(start_num, end_num)
 
     #   Calculate error band value, from the starting and ending numbers.
