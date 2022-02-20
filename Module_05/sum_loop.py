@@ -5,13 +5,13 @@
 # Course: CIS156, Section 36323
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
 #
-# Program name: sum_loop.py
+# Program name: total_cash.py
 #
 """
 
 Ch 5 Programming Assignment, Part A
 
-Create a program called sum_loop.py. In it, ask the user for a starting number and an ending number.
+Create a program called total_cash.py. In it, ask the user for a starting number and an ending number.
 Then use a loop (not a function) to calculate the sum of every number from the first to the second.
 The image below shows an example of the user inputs 3 and 15.
 

@@ -22,75 +22,146 @@ If you have trouble getting this to work, you can skip the "randomness"
 and just pick a number to be guessed.
 
 """
+#
+# Import any required external programs
+#
+
+import random
 
 """
 Variable List
 
 String variables:
-job     - which job ("W" for wait staff, "H" for host, "K" for kitchen staff)
-job_title_dic   - dictionary list of job titles to simple character label, both key and data are strings
-employee_first_name - employee's first name only
+play_again  - answer to play the game again question, only Y and N are accepted
 
 Floating point numbers:
-hours_worked    - hours worked in the last week
-wage_rate       - hourly rate, based on job and years employed
 
 Integers numbers: 
-years_employed  - number of years employed in the current position
+start_num   - number entered to start summing process
+temp_start  - holds start, to be used if start is greater than end
+end_num     - number entered to end summing process
+temp_end    - holds end, to be used if start is greater than end
+random_goal - random number picked by the computer
+error_band  - the span of the ending number minus the starting number divided by 3.
+                This number is used to add "to" to the "high" or "low" error statement. 
+guess       - value entered by user
+guess_count - count of tries to match random number
+guess_error - how wrong was the guess
+
 
 """
 
-"""
-Copied in from Bash Scripting assignment
+#
+# Create and Assign default values to the variables.
+#
+# Setting the default for play_again, as it is used for the while loop containing the whole game.
+play_again = "Y"
 
-function Random
-{
-# Option C - Has the user try to guess the number the computer has picked,
-#        at random between 1 to 10.
+# Setting the default values for the game.
+start_num = 1
+end_num = 10
 
-	local RandomNumber Guess
+# Setting the
+random_goal = 0
+guess = 1
+guess_count = 0
+guess_error = 0
 
-	RandomNumber=$(( $RANDOM%10 + 1 ))
 
-	clear; echo; echo
-	echo "   The computer has picked a number between 1 and 10."
-	echo; read -p "      Please enter your guess within that range: " Guess
+#
+# Start the game, this is the return point if the user wishes to play again.
+#
 
-	if [[ ( $Guess -lt 1 ) || ( $Guess -gt 10 ) ]]
-	then
+while play_again != "N":
 
-		echo; echo "   Your guess was either less than 0 or "
-		echo "      was greater than 10."
-		echo; sleep 2
+    #
+    # Introduce player to the game
+    #
 
-	else
+    print(f"\n\nThis game asks you, the player, to guess a number between {start_num} and {end_num}.")
+    print('\nThe player will have the option to enter their own unique start and end numbers.')
+    print('\nThe player\'s start and end numbers can be positive or negative numbers.')
+    print('\tThe only restriction is the start must be less than the end.')
+    print('\tIf the start is greater than the end, the numbers will be switched.')
 
-		if [[ $RandomNumber -eq $Guess ]]
-		then
+    # Ask if the player would like to enter their own starting and ending numbers.
+    #   If they want to, request their numbers.
+    # Also, validate for the correct response.
+    while True:
+        print("\nWould you like to enter your own starting and ending numbers?")
+        play_again = input("\tIf so, enter (Y) for yes or (N) for no. ")
+        play_again = play_again.upper()
+        if play_again == "N" or play_again == "Y":
+            break
+        else:
+            print("The only valid entries are either a Y or an N.")
 
-			echo; echo "   Great guess, you were right."; sleep 2
+    #
+    # If the user wants to enter their own numbers,
+    #   ask the user for the starting and ending numbers, also capture the numbers
+    #   in case the starting number is greater than the ending number.
+    if play_again == "Y":
+        temp_start = start_num = int(input("\nPlease enter the starting number: "))
+        temp_end = end_num = int(input("\tNow enter the ending number:  "))
 
-		elif [[ $RandomNumber -gt $Guess ]]
-		then
+        # If the starting number is greater than the ending number, switch the numbers.
+        if temp_start > temp_end:
+            end_num = temp_start
+            start_num = temp_end
 
-			echo; echo "   Sorry your guess was to small."; sleep 2
+    # Set goal to something larger that ending number to ensure that play starts.
+    guess = end_num * 355 / 113   # Note, 355/113 is a fair approximation of pi!!
 
-		else
+    # Generate the random number (integer) using the randint function.
+    #   Base the random number on the starting and ending numbers.
+    random_goal = random.randint(start_num, end_num)
 
-			echo; echo "   Sorry your guess was to large."; sleep 2
+    #   Calculate error band value, from the starting and ending numbers.
+    error_band = (end_num - start_num) // 3
 
-		fi 
+    # This print line was for testing. It will be removed or commented out when finished.
+    # print(f'Start: {start_num} End: {end_num} Random number: {random_goal} and Error {error_band}')
 
-	echo; echo "   The computer picked $RandomNumber and you guessed $Guess"
+    #
+    # Start the guessing portion of the program
+    #
+    # Resetting the guess count, important if playing the program more than once.
+    guess_count = 0
 
-        sleep 3
+    while guess != random_goal:
+        guess = int(input("Enter your guess: "))
+        guess_count += 1
 
-	fi
+        # Test guess and if wrong, give feedback
+        if guess != random_goal:
+            guess_error = abs(guess - random_goal)
+            if guess_error > error_band:
+                if guess > random_goal:
+                    print(f'Your entry of {guess}, was Too High.')
+                else:
+                    print(f'Your entry of {guess}, was Too Low.')
+            else:
+                if guess > random_goal:
+                    print(f'Your entry of {guess}, was High.')
+                else:
+                    print(f'Your entry of {guess}, was Low.')
 
-}
+        # When the guess is correct, report the results
+        if guess == random_goal:
+            if guess_count == 1:
+                print(f"\nGreat job, you guessed the random number: {random_goal} in {guess_count} try.")
+            else:
+                print(f"\nGreat job, you guessed the random number: {random_goal} in {guess_count} tries.")
 
-"""
-
+    # Ask if the user would like to play the game again?
+    # Also, validate for the correct response.
+    while True:
+        play_again = input("\nWould you like to play the game again? Enter (Y) for yes or (N) for no. ")
+        play_again = play_again.upper()
+        if play_again == "N" or play_again == "Y":
+            break
+        else:
+            print("The only valid entries are either a Y or an N.")
 
 
 # End of program
