@@ -23,11 +23,12 @@ and just pick a number to be guessed.
 
 """
 #
-# Import required module files
+# Import required module files.
 #
 
 import random
 
+# End of import section.
 """
 Variable List
 
@@ -36,7 +37,7 @@ play_again  - answer to play the game again question, only Y and N are accepted
 
 Floating point numbers:
 
-Integers numbers: 
+numbers numbers: 
 start_num   - number entered to start summing process
 temp_start  - holds start, to be used if start is greater than end
 end_num     - number entered to end summing process
@@ -75,12 +76,16 @@ guess_error = 0
 while play_again != "N":
 
     #
-    # Introduce player to the game
-    #
+    # Reset the starting and ending numbers, needed to return to basic 1 to 10 random play.
+    start_num = 1
+    end_num = 10
 
+    #
+    # Introduce player to the game.
+    #
     print(f"\n\nThis game asks you, the player, to guess a number between {start_num} and {end_num}.")
-    print('\nThe player will have the option to enter their own unique start and end numbers.')
-    print('\nThe player\'s start and end numbers can be positive or negative numbers.')
+    print('\nThe player does have the option to enter their own unique starting and ending numbers.')
+    print('\nThe player\'s starting and ending numbers can be positive or negative numbers.')
     print('\tThe only restriction is the start must be less than the end.')
     print('\tIf the start is greater than the end, the numbers will be switched.')
 
@@ -112,19 +117,19 @@ while play_again != "N":
     # Set goal to something larger that ending number to ensure that play starts.
     guess = end_num * 355 / 113   # Note, 355/113 is a fair approximation of pi!!
 
-    # Generate the random number (integer) using the random module object, randint.
+    # Generate the random number (number) using the random module object, randint.
     #   The random number used the starting and ending numbers, to determine the range of
     #       the random number generated.
     random_goal = random.randint(start_num, end_num)
 
-    #   Calculate error band value, from the starting and ending numbers.
+    #   Calculate error band value, from the starting and ending numbers and using floor division.
     error_band = (end_num - start_num) // 3
 
     # This print line was for testing. It will be removed or commented out when finished.
     # print(f'Start: {start_num} End: {end_num} Random number: {random_goal} and Error {error_band}')
 
     #
-    # Start the guessing portion of the program
+    # Start the guessing portion of the program.
     #
     # Resetting the guess count, important if playing the program more than once.
     guess_count = 0
@@ -133,7 +138,7 @@ while play_again != "N":
         guess = int(input("Enter your guess: "))
         guess_count += 1
 
-        # Test guess and if wrong, give feedback
+        # Test guess and if wrong, give directional feedback.
         if guess != random_goal:
             guess_error = abs(guess - random_goal)
             if guess_error > error_band:
@@ -147,13 +152,14 @@ while play_again != "N":
                 else:
                     print(f'Your entry of {guess}, was Low.')
 
-        # When the guess is correct, report the results
+        # When the guess is correct, report the results.
         if guess == random_goal:
             if guess_count == 1:
                 print(f"\nGreat job, you guessed the random number: {random_goal} in {guess_count} try.")
             else:
                 print(f"\nGreat job, you guessed the random number: {random_goal} in {guess_count} tries.")
 
+    # The following code as copied from the sum_loop program.
     # Ask if the user would like to play the game again?
     # Also, validate for the correct response.
     while True:
@@ -163,6 +169,5 @@ while play_again != "N":
             break
         else:
             print("The only valid entries are either a Y or an N.")
-
 
 # End of program
