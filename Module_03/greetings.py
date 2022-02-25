@@ -20,7 +20,7 @@ age = int(input('Please enter your age: '))
 
 print('\nHello', first_name, ', it is great to meet you!')
 
-# Calculate a new varialbel with the users age in 10 years and include it in a message.
+# Calculate a new variable with the users age in 10 years and include it in a message.
 
 new_age = age + 10
 
