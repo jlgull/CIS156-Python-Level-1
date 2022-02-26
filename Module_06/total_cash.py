@@ -75,36 +75,42 @@ bill_array = ['Ones', 1, 'I_count',
 """
 It should then call a function that accepts each of those values as arguments/parameters and
     returns (not prints!) the total amount of the cash.
-
 Here is the function to turn a count of the number of bills in your wallet or hand
    into a total cash amount. Since I only wanted to define the bill_array once, it was included
    as a global variable in the function.
 
-"""
+ Determined I could use a global value, instead of passing the 7 different
+   values. 
+ # def count_bills(I_c=0, II_c=0, V_c=0, X_c=0, XX_c=0, L_c=0, C_c=0):
+ """
 
 
-def count_bills(I_c=0, II_c=0, V_c=0, X_c=0, XX_c=0, L_c=0, C_c=0):
+def count_bills():
     global bill_array
+
     # Clear or set the total_cash variable.
     cash_sum = 0
+
     # Use a for loop to total the cash, based on values supplied by the call.
     for t in range(0, len(bill_array), 3):
         cash_sum = cash_sum + (bill_array[t + 1] * bill_array[t + 2])
     return cash_sum
 
+
 # Main body of the program.
 # It should ask the user to input the quantity of each denomination of bills
 #     (ones, fives, etc--up to hundreds).
 
-
-# Use a for loop to collect how many of each bill denomination is being counted.
+# Use a for loop to collect how many of each bill denomination is to be summed.
 for i in range(0, len(bill_array), 3):
     while True:
         print(f"Please enter the number of ${bill_array[i + 1]} bills in your wallet: ", end='')
         input_string = input()
+
         # If the user enters nothing, the input value will be set to 0.
         if input_string == "":
             input_string = "0"
+
         # Test to ensure that a number between 0 and 9 was entered. The input was a string value; but
         #   only an integer is needed. This also prevents a none number entry from crashing the program.
         if '0' <= input_string <= '9':
@@ -113,23 +119,29 @@ for i in range(0, len(bill_array), 3):
         print("The entry must be a number between 0 and 9.\n")
 
 # Call the function, with the data that was entered.
+"""
+# This is how I first tried to pass the data to the function. Found I could use a global value
+#   to do the same thing. 
 total_cash = count_bills(I_c=bill_array[2], II_c=bill_array[5],
                          V_c=bill_array[8], X_c=bill_array[11],
                          XX_c=bill_array[14], L_c=bill_array[17],
                          C_c=bill_array[20])
+"""
 
-# Print out the data supplied and the cash total, as well. Don't print denomination when the
+total_cash = count_bills()
+
+# Print out the data supp
+# lied and the cash total, as well. Don't print denomination when the
 #   user reported that they didn't have any of that denomination.
 print("\nIn your wallet you reported:")
 for i in range(0, len(bill_array), 3):
     if bill_array[i + 2] == 0:
-        i += 3
+        continue
     elif bill_array[i + 2] == 1:
         print(f"    {bill_array[i + 2]} - ${bill_array[i + 1]} bill")
     else:
         print(f"    {bill_array[i+2]} - ${bill_array[i + 1]} bills")
 
 print(f"\nThis totals to ${total_cash} cash in your wallet.")
-
 
 # End of program
