@@ -35,6 +35,7 @@ List info:
 String variables:
     In main program:
         count_letter    -   The letter to be counted in each word.
+        total_title     -   The title for the print section.
 
 In function:
                   
@@ -56,6 +57,7 @@ Integers numbers:
 word_list = list()
 letter_count = list()
 letter_count_total = 0
+total_title = "Total occurences"
 
 
 # Function definition section of the program if any functions are required.
@@ -106,15 +108,15 @@ while do_again != "N":
     print(f"\tas well as a total count in all {num_of_entries} words or phrased you entered.")
 
     # Draw a line above the counted results
-    print("-" * 60)
+    print("-" * 35)
 
     # Print out the results of the count process.
     for i in range(num_of_entries):
-        print(f"{word_list[i]:-<25} {letter_count[i]:>10}")
+        print(f"{word_list[i]:-<25}{letter_count[i]:>10}")
 
     # Draw a line above the counted results
-    print("-" * 60)
-    print(f"Total Occurrences  {letter_count_total:>10}")
+    print("-" * 35)
+    print(f"{total_title:<25}{letter_count_total:>10}")
 
     # Ask if the user would like to play again.
     # Also, validate for the correct response.
