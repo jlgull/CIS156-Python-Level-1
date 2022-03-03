@@ -30,14 +30,14 @@ def replace_character(word, find, replace):
 #
 # Main Program
 #
-entered_phrase = input("\nEnter a phrase or your full name, with spaces: ")
-find_char = input("\tEnter the character to find in your phrase or full name (enter for space): ")
+entered_phrase = input("\nEnter your full name or a phrase, with spaces: ")
+find_char = input("\tEnter the character to find in your full name or phrase (\"Enter\" for a space): ")
 if find_char == "":
     find_char = " "
-replace_char = input("\tEnter the character to replace in your phrase or full name: ")
+replace_char = input("\tEnter the character to replace in your full name or phrase: ")
 
-# This was created prior to learning about the .replace method. Works fine;
-#   but then the function has to be created and tested. chose to leave it in
+# This was created prior to learning about the (.replace) method. Works fine;
+#   but then the function has to be created and tested. Chose to leave it in
 #   since I had created it.
 # final_phrase = replace_character(entered_phrase, find_char, replace_char)
 
@@ -50,7 +50,6 @@ while caps_lock != "Y":
     print("\nIf you would like the output in all CAPITALS,")
     # Use .upper method, to ensure that only "Y" and "N" are entered.
     caps_lock = input("\tEnter a 'Y' for yes or a 'N' for no! ").upper()
-    # caps_lock = caps_lock.upper()
     if caps_lock != "Y" and caps_lock != "N":
         print("The only acceptable responses are \'Y\' or \'N\'.")
     else:
