@@ -13,21 +13,11 @@
 # Define functions
 #
 
+my_string = 'roy came third in the running race'
 
-url = input('Enter Wikipedia URL: ')
+new_string = my_string.capitalize()
+new_string = new_string.replace('thi', '3')
 
-tokens = url.split('/')
-
-print(tokens)
-
-
-if 'wiki' != tokens[3]:
-    tokens.insert(3, 'wiki')
-    new_url = '/'.join(tokens)
-
-    print(f'{url} is not a valid address.')
-    print(f'Redirecting to {new_url}')
-else:
-    print(f'Loading {url}')
+print(my_string, new_string)
 
 # End of Program

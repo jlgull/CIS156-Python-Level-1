@@ -26,19 +26,19 @@ List info:
 
 
 String variables:
-In main program (total_cash.py):
+    In main program:
 
-In function (count_bills):
+    In function:
                   
 Floating point numbers:
-In main program (total_cash.py):
+    In main program:
   
-In function (count_bills):
+    In function:
 
 Integers numbers: 
-In main program (total_cash.py):
+    In main program:
       
-In function (count_bills):
+    In function:
    
 """
 

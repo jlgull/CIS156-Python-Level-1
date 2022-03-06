@@ -10,10 +10,13 @@
 """
 Generic shell for the CIS156 programs
 
-Ch XX Programming Assignment, Part ??
+Ch 8 Programming Assignment, Part A
 
-Copy instructions from Canvas, change the program name as required.
+Create a program called grocery_list.py that allows the user to input a list of items to buy at the
+    supermarket. It should begin by asking the user to input the number of items to add to the list.
+    Then, it should use a loop to prompt the user to input that many items, storing each in the list.
 
+After the items have been entered, it should output the full list.
 
 """
 
@@ -44,9 +47,6 @@ Integers numbers:
 
 # Function definition section of the program
 
-"""
-
- """
 
 
 # Set the while control value to "Y".

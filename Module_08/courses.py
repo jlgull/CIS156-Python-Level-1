@@ -10,10 +10,17 @@
 """
 Generic shell for the CIS156 programs
 
-Ch XX Programming Assignment, Part ??
+Ch 8 Programming Assignment, Part B
 
-Copy instructions from Canvas, change the program name as required.
+Create a program called courses.py that has a dictionary with 7 course names
+    (for example: CIS105, ENG101, etc), along with the name of each associated instructor.
+Prompt the user for the name of a course to look up, or the word "quit" to exit.
+After the user types in a course, it should look up and print that course's instructor.
 
+The program should repeat this until the user enters "quit" at the prompt.
+
+Note: The program does NOT need to gracefully handle the error that may occur if the course
+    is not found in the dictionary; for now, your program only needs to work when a course is entered correctly.
 
 """
 
@@ -44,9 +51,6 @@ Integers numbers:
 
 # Function definition section of the program
 
-"""
-
- """
 
 
 # Set the while control value to "Y".
