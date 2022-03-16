@@ -13,6 +13,13 @@
 # Define functions
 #
 
+def get_key(val):
+    for key, value in country_pop.items():
+         if val == value:
+             return key
+
+
+
 user_input = 'China:1365830000,India:1247220000,United States:318463000,Indonesia:252164800'
 entries = user_input.split(',')
 country_pop = {}
@@ -21,15 +28,20 @@ print(entries)
 for pair in entries:
     print(pair)
     split_pair = pair.split(':')
-    country_pop[split_pair[0]] = split_pair[1]
+    country_pop[split_pair[0]] = int(split_pair[1])
     # country_pop is a dictionary, Ex: { 'Germany':'82790000', 'France':'67190000' }
 
 
 print("\nThe solution!\n")
 
 ''' Your solution goes here '''
-for country, pop in country_pop.items():
-    # pop_d = "{:,}".format(pop)
 
-    print(f'{country} has {int(pop):,} people.')
+pop_list = sorted(list(country_pop.values()), reverse=True)  # Convert view to list
+#sorted_pop = sorted(pop_list)
+print(pop_list)
+
+#for country, pop in country_pop.items():
+
+    print(f'{country} has {pop:,} people.')
 # End of Program
+()
