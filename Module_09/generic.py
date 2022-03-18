@@ -63,8 +63,7 @@ while do_again != "N":
     # Also, validate for the correct response.
     while True:
         print("\nWould you like to calculate the sum of your bills again? Enter (Y) for yes or (N) for no.", end=" ")
-        do_again = input()
-        do_again = do_again.upper()
+        do_again = input().upper()
         if do_again == "N" or do_again == "Y":
             break
         else:

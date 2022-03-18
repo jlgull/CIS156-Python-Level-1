@@ -8,7 +8,6 @@
 # Program name: grocery_list.py
 #
 """
-Generic shell for the CIS156 programs
 
 Ch 8 Programming Assignment, Part A
 
@@ -41,10 +40,12 @@ List info:
 
 String variables:
     In main program:
-    print_label - The label for the printing job.
+        do_again    - Holds flag for the while loop, regarding the re-execution of the program.
+        print_label - The label for the printing job.
 
     In function:
-                  
+        name    - Information returned by the system, to identify type of OS
+                      
 Floating point numbers:
     In main program:
   
@@ -68,12 +69,12 @@ def clear():
     # which is found under the "Edit run configuration" tab.
 
     # for windows
-    if name == 'nt':
-        _ = system('cls')
+    if name == "nt":
+        _ = system("cls")
 
-    # for mac and linux(here, os.name is 'posix')
+    # for mac and linux(here, os.name is "posix")
     else:
-        _ = system('clear')
+        _ = system("clear")
 #
 # End of function definition section
 

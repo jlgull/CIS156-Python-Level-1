@@ -14,8 +14,10 @@ from os import system, name
 # import sleep to show output for some time period
 from time import sleep
 
+# End of import section
+
 #
-# Define functions
+# Function definition section of the program
 #
 
 
@@ -29,6 +31,8 @@ def clear():
     # for mac and linux(here, os.name is 'posix')
     else:
         _ = system('clear')
+
+# End of function definitions
 
 
 # print out some text

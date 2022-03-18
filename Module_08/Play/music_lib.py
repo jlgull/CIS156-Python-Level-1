@@ -24,44 +24,47 @@ First, add a command that adds an artist name to the music dictionary.
 
 """
 
+"""
 
+# raw data:
+employees = {1000: {'name': 'Derek', 'job': 'support', 'salary': 89567},
+             1001: {'name': 'Alice', 'job': 'coder', 'salary': 94275},
+             1002: {'name': 'Lucia', 'job': 'writer', 'salary': 76500},
+             1003: {'name': 'Micah', 'job': 'trainer', 'salary': 81354},
+             1004: {'name': 'Sarah', 'job': 'sales', 'salary': 64152}}
+
+for id in employees:
+    name = employees[id].get('name')
+    pay = employees[id].get('salary')
+    print(f'{name} gets paid ${pay:.2f}')
+
+"""
 music = {
-    'Pink Floyd': {
-        'The Dark Side of the Moon': {
-            'songs': [ 'Speak to Me', 'Breathe', 'On the Run', 'Money'],
-            'year': 1973,
-            'platinum': True
-        },
-        'The Wall': {
-            'songs': [ 'Another Brick in the Wall', 'Mother', 'Hey you'],
-            'year': 1979,
-            'platinum': True
-        }
-    },
-    'Justin Bieber': {
-        'My World':{
-            'songs': ['One Time', 'Bigger', 'Love Me'],
-            'year': 2010,
-            'platinum': True
-        }
-    }
-}
+    'Pink Floyd': {'album': 'The Dark Side of the Moon', 'songs': ['Speak to Me', 'Breathe', 'On the Run', 'Money'], 'year': 1973, 'platinum': True },
+        {'album:': 'The Wall', 'songs': ['Another Brick in the Wall', 'Mother', 'Hey you'], 'year': 1979, 'platinum': True },
+    'Justin Bieber': {'album': 'My World', 'songs': ['One Time', 'Bigger', 'Love Me'], 'year': 2010, 'platinum': True}
+
 
 # First, add a command that adds an artist name to the music dictionary.
 
 # Get user input
-
+print(music)
 artist_name = input('Enter the artist name to add or review data, "exit" to quit ')
 
 # While user input != 'exit'
     # ....
 
 if artist_name in music:
-    print(f'For the artist {artist_name}')
-    print(f'Songs: {music[artist_name][songs]}')
+    for album in music[artist_name]:
+        print(f'For the artist {artist_name}')
+        print(album)
+        album_list = music[artist_name].get('album')
+        print(album_list)
+        song_list = album_list.get('songs')
+        print(f'Song list: {song_list}')
 
-    print(f'Released: {music[artist_name]:year}')
+    #print(f'Released: {music[artist_name]:year}')
 
-#f'is {music[artist_name]}')
+"""
 
 # End of Program
