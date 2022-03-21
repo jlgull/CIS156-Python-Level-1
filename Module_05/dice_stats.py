@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/user/bin/python3.8
 #
 # Author: Jonathan Heard
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
