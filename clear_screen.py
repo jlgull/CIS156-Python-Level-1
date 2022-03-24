@@ -8,7 +8,7 @@
 #
 # Import all required options
 #
-# import only system from os
+# Import system and name from os
 from os import system, name
 
 # import sleep to show output for some time period
@@ -22,7 +22,9 @@ from time import sleep
 
 
 def clear():
-    # define our clear function
+    # Define the clear function, which is agnostic to the operating system
+    # being used. In PyCharm you have to sent "Emulate terminal in output console",
+    # which is found under the "Edit run configuration" tab.
 
     # for windows
     if name == 'nt':
