@@ -13,6 +13,7 @@
 #
 # Import system and name from os
 from os import system, name
+# from typing import List
 
 """
 Generic shell for the CIS156 programs
@@ -52,9 +53,9 @@ String variables:
     In main program:
         do_again    -   Flag to control the repeating of the program.
         entered_item_name   - The name of the item put in the shopping cart.
+        item_count  -   How many items to enter, can be either "" or 2.
 
-        item_list = ItemToPurchase(entered_item_name, entered_item_price, entered_item_quantity )
-    In function:
+     In function:
                   
 Floating point numbers:
     In main program:
@@ -80,7 +81,6 @@ def clear():
     # being used. In PyCharm you have to sent "Emulate terminal in output console",
     # which is found under the "Edit run configuration" tab.
 
-
     # for windows
     if name == 'nt':
         _ = system('cls')
@@ -88,6 +88,7 @@ def clear():
     # for mac and linux(here, os.name is 'posix')
     else:
         _ = system('clear')
+
 
 # End of function definitions
 
@@ -118,7 +119,7 @@ while do_again != "N":
             Bottled Water 10 @ $1.25 = $12.5
     """
 
-    # Clear the screen on the first run or any repeated use of the program
+    # Clear the screen on the first run or any repeated use of the program.
     clear()
 
     # Create the new class.
@@ -130,7 +131,7 @@ while do_again != "N":
             self.item_price = item_price
             self.item_quantity = item_quantity
 
-        # Create print method
+        # Create print method.
         def print_item_cost(self):
             return (f"{self.item_name} {self.item_quantity} @ "
                     f"${self.item_price:.2f} = ${self.item_price * self.item_quantity:.2f} ")
@@ -155,25 +156,49 @@ while do_again != "N":
     """
 
     # This is the main body of the program, as required for section (2). This portion will query the user for
-    #   either 2 items, as required for CIS156 or it will be an unlimited list, that goes on until there is
+    #   either 2 items, as required for CIS156, or it will be an unlimited list, that goes on until there is
     #   no entry.
 
-    # Initialize the empty shopping cart.
+    # Initialize the empty shopping cart list variable.
     shopping_cart = []
 
-    print("This is the entry portion, for the shopping cart.\n"
-          "For each record enter the requested information.\n")
+    while True:
+        # Set up for either 2 items or unlimited.
+        print("\nThis program will allow you to place just 2 items, as required for CIS156, \n"
+              "    or you may place as many items in your cart as you wish.\n\n"
+              "For the unlimited number of items, press \"Enter\" or")
+        cart_size = input("    for the CIS156 program, enter the number 2. ")
 
-    for i in range(2):
+        # Determine if a 2 as entered or simply nothing.
+        if len(cart_size) != 0 and cart_size != "2":
+            print("The only valid entries are 2 or nothing.")
+        else:
+            break
+
+    item_count = 1000 if len(cart_size) == 0 else 2
+
+    # Clear the screen prior requesting items for the shopping cart.
+    clear()
+
+    print("Please place your items in the shopping cart.\n"
+          "For each item placed in your cart, enter the requested information.\n"
+          "   When your done shopping, simply press \"Enter\".\n")
+
+    # Initialize the counter i.
+    i = 0
+
+    while True:
         print(f"Item {i+1}")
+        if i == int(item_count):
+            break
         entered_item_name = input("Enter the item name:\n").title()
+        if len(entered_item_name) == 0:
+            break
         entered_item_price = float(input("Enter the item price, for example 1.25 for $1.25:\n"))
         entered_item_quantity = int(input("Enter the item quantity:\n"))
-        item_list = ItemToPurchase(entered_item_name, entered_item_price, entered_item_quantity)
-        shopping_cart.append(item_list)
+        shopping_cart.append(ItemToPurchase(entered_item_name, entered_item_price, entered_item_quantity))
+        i += 1
         print()   # This print statement is just for spacing between multiple entries.
-
-
 
     """
     (3) Add the costs of the two items together and output the total cost.
@@ -189,9 +214,9 @@ while do_again != "N":
     """
 
     total_cost = 0
-    print("Your shopping cart hold 2 items, here are the details.")
+    print(f"Your shopping cart holds {len(shopping_cart)} items, here are the details.\n")
     print("TOTAL COST")
-    for i in range(2):
+    for i in range(len(shopping_cart)):
         print(shopping_cart[i].print_item_cost())
         total_cost += shopping_cart[i].item_price * shopping_cart[i].item_quantity
     print(f"\nTotal: ${total_cost:.2f}")
