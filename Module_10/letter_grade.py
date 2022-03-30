@@ -7,6 +7,15 @@
 #
 # Program name: letter_grade.py
 #
+
+# Import all required options
+#
+# Import system and name from os
+from os import system, name
+
+# End of import section
+
+
 """
 Ch 10 Programming Assignment, Part B
 
@@ -32,12 +41,17 @@ List info:
 
 String variables:
     In main program:
+        letter_grade    -   The Letter grade determined by the program
 
     In function:
+        name    -   In the clear function, finds the type of OS being used.
+        system  -   In the clear function, holds the appropriate OS clear command.  
+    
                   
 Floating point numbers:
     In main program:
-  
+        grade   -   The numerical value entered.
+        
     In function:
 
 Integers numbers: 
@@ -49,6 +63,24 @@ Integers numbers:
 
 # Function definition section of the program
 #
+
+
+def clear():
+    # Define the clear function, which is agnostic to the operating system
+    # being used. In PyCharm you have to sent "Emulate terminal in output console",
+    # which is found under the "Edit run configuration" tab.
+
+    # for windows
+    if name == "nt":
+        _ = system("cls")
+
+    # for mac and linux(here, os.name is "posix")
+    else:
+        _ = system("clear")
+
+
+#
+# End of function definition section
 #
 
 # Set the while control value to "Y".
@@ -71,15 +103,45 @@ while do_again != "N":
         0% - 59% = F
     """
 
+    # Clear the screen prior to each run.
+    clear()
 
+    # Print information about the program.
+    print("\nWelcome the the Letter grade derivation program.\n"
+          "\nPlease enter your current grade percentage,\n"
+          " and the program will return your your Letter grade.")
 
-    # The following code as copied from the sum_loop program.
+    # Request the numerical grade from the user.
+    # Validate that the data entered is a number and
+    #   between the limits of 0 and 100.
+    while True:
+        try:
+            grade = float(input("\nEnter current grade percentage:  "))
+        except ValueError:
+            print("Only numbers are allowed.")
+            continue
+        try:
+
+            # Test that the grade is within the limits set above.
+            if grade < 0 or grade > 100:
+                raise ValueError(f"Only grades between 0 and 100 can be evaluated.")
+        except ValueError as error_feedback:
+            print(error_feedback)
+            continue
+        break
+
+    # Determine the letter grade, with ternary based single in-line if statement.
+    letter_grade = "A" if grade >= 90 else "B" if grade >= 80 else "C" if grade >= 70 else "D" if grade >= 60 else "F"
+
+    # Print out the number grade entered and the letter grade equivalence.
+    print(f"\nThe current grade percentage entered was {grade},", end=""
+          f" which equates to a Letter grade of \"{letter_grade}\".\n")
+
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.
     while True:
-        print("\nWould you like to calculate the sum of your bills again? Enter (Y) for yes or (N) for no.", end=" ")
-        do_again = input()
-        do_again = do_again.upper()
+        print("\nWould you like to determine another Letter grade? Enter (Y) for yes or (N) for no.", end=" ")
+        do_again = input().upper()
         if do_again == "N" or do_again == "Y":
             break
         else:
