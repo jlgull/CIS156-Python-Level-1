@@ -8,8 +8,6 @@
 # Program name: letter_grade.py
 #
 """
-Generic shell for the CIS156 programs
-
 Ch 10 Programming Assignment, Part B
 
 Create a program called letter_grade.py that asks the user to input their current grade percentage and
@@ -50,11 +48,8 @@ Integers numbers:
 """
 
 # Function definition section of the program
-
-"""
-
- """
-
+#
+#
 
 # Set the while control value to "Y".
 do_again = "Y"
@@ -63,6 +58,19 @@ do_again = "Y"
 while do_again != "N":
 
     # Main body of the program.
+
+    """
+    Create a program called letter_grade.py that asks the user to input their current grade percentage and
+    then outputs the corresponding letter grade (A through F).
+
+    Found the letter grade information in the CIS156 Syllabus, page 3 of 4.
+        90% - 100% = A
+        80% - 89% = B
+        70% - 79% = C
+        60% - 69% = D
+        0% - 59% = F
+    """
+
 
 
     # The following code as copied from the sum_loop program.
