@@ -115,26 +115,29 @@ while do_again != "N":
     # Validate that the data entered is a number and
     #   between the limits of 0 and 100.
     while True:
+
+        # Test the data entered is a floating point number.
         try:
-            grade = float(input("\nEnter current grade percentage:  "))
+            grade = float(input("\nEnter current grade percentage, between 0 and 100:  "))
         except ValueError:
             print("Only numbers are allowed.")
             continue
-        try:
 
-            # Test that the grade is within the limits set above.
+        # Test that the grade is between 0 and 100.
+        try:
             if grade < 0 or grade > 100:
-                raise ValueError(f"Only grades between 0 and 100 can be evaluated.")
+                raise ValueError(f"Your entered grade, {grade:.2f}, in not between 0 and 100.")
         except ValueError as error_feedback:
             print(error_feedback)
             continue
         break
 
     # Determine the letter grade, with ternary based single in-line if statement.
-    letter_grade = "A" if grade >= 90 else "B" if grade >= 80 else "C" if grade >= 70 else "D" if grade >= 60 else "F"
+    letter_grade = "A" if grade >= 90.0 else "B" if grade >= 80.0 else "C" if grade >= 70.0 else "D" \
+        if grade >= 60.0 else "F"
 
     # Print out the number grade entered and the letter grade equivalence.
-    print(f"\nThe current grade percentage entered was {grade},", end=""
+    print(f"\nThe current grade percentage entered was {grade:.2f},", end=""
           f" which equates to a Letter grade of \"{letter_grade}\".\n")
 
     # Ask if the user would like to repeat the program.

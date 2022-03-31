@@ -165,7 +165,7 @@ while do_again != "N":
     # Here is the printed output of program.
     print(f"\nThe wall is {wall_width:.2f} feet wide and {wall_height:.2f} feet tall.")
     print(f"The total wall area is {wall_area:.2f} Square feet.")
-    print(f"Based on the paint cost of ${paint_cost:.2f}, the cost per Square Foot is $", end="")
+    print(f"Based on the entered paint cost of ${paint_cost:.2f}, the cost per Square Foot is $", end="")
     print(f"{paint_cost / wall_area:.2f}.")
 
     # Ask if the user would like to repeat the program.
