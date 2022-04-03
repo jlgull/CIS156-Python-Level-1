@@ -5,7 +5,7 @@
 # Course: CIS156, Section 36323
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
 #
-# Program name: generic.py
+# Program name: math_module.py
 #
 """
 Generic shell for the CIS156 programs

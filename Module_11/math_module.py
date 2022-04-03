@@ -10,12 +10,22 @@
 """
 Generic shell for the CIS156 programs
 
-Ch XX Programming Assignment, Part ??
+Ch 11 Programming Assignment, Part B
 
-Copy instructions from Canvas, change the program name as required.
 
+Create a program called math_module.py that uses the math module (https://docs.python.org/3.5/library/math.html
+    (Links to an external site.)) to do the following:
+
+    Prompt the user to enter a number.
+    Calculate and output the factorial of the entered number using a function from the math module.
+        For example, the factorial of 4 is 24.
+    Calculate and output the value of the entered number raised to the power of 3 using a function from the
+        math module. For example, 4 raised to the power of 3 is 64.
+
+Hint: You may find the w3schools (Links to an external site.) math module reference helpful in solving Part B.
 
 """
+
 #
 # Import all required options
 #
@@ -26,6 +36,7 @@ from os import system, name
 from time import sleep
 
 # End of import section
+
 
 
 """
@@ -50,13 +61,12 @@ Integers numbers:
     In main program:
       
     In function:
-   
+
 """
 
-#
-# Function definition section of the program
-#
 
+
+# Function definition section of the program
 
 def clear():
     # Define the clear function, which is agnostic to the operating system
@@ -75,6 +85,7 @@ def clear():
 
 
 
+
 # Set the while control value to "Y".
 do_again = "Y"
 
@@ -84,14 +95,15 @@ while do_again != "N":
     # Main body of the program.
 
 
+    # The following code as copied from the sum_loop program.
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.
     while True:
-        print("\nWould you like to calculate the sum of your bills again? Enter (Y) for yes or (N) for no.", end=" ")
+        print("\nWould you like to run the program again? Enter (Y) for yes or (N) for no.", end=" ")
         do_again = input().upper()
         if do_again == "N" or do_again == "Y":
             break
         else:
             print("The only valid entries are either a Y or an N.")
 
-# End of program
+# End of program.

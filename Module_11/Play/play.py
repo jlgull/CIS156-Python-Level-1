@@ -13,21 +13,6 @@
 # Define functions
 #
 
-class Subtract:
 
-    def __init__(self, num1, num2):
-
-        self.num1= num1
-
-        self.num2 = num2
-
-    def calculate_diff(self):
-
-        diff = self.num1 - self.num2
-
-        print(diff)
-
-
-diff1 = Subtract()
 
 # End of program

@@ -5,7 +5,7 @@
 # Course: CIS156, Section 36323
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
 #
-# Program name: generic.py
+# Program name: math_module.py
 #
 """
 Generic shell for the CIS156 programs
@@ -16,6 +16,17 @@ Copy instructions from Canvas, change the program name as required.
 
 
 """
+#
+# Import all required options
+#
+# Import system and name from os
+from os import system, name
+
+# import sleep to show output for some time period
+from time import sleep
+
+# End of import section
+
 
 """
 
@@ -42,11 +53,26 @@ Integers numbers:
    
 """
 
+#
 # Function definition section of the program
+#
 
-"""
 
- """
+def clear():
+    # Define the clear function, which is agnostic to the operating system
+    # being used. In PyCharm you have to sent "Emulate terminal in output console",
+    # which is found under the "Edit run configuration" tab.
+
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
+
+# End of function definitions
+
 
 
 # Set the while control value to "Y".
@@ -58,13 +84,11 @@ while do_again != "N":
     # Main body of the program.
 
 
-    # The following code as copied from the sum_loop program.
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.
     while True:
         print("\nWould you like to calculate the sum of your bills again? Enter (Y) for yes or (N) for no.", end=" ")
-        do_again = input()
-        do_again = do_again.upper()
+        do_again = input().upper()
         if do_again == "N" or do_again == "Y":
             break
         else:

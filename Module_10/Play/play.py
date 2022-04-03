@@ -13,8 +13,9 @@
 # Define functions
 #
 
-x = float(input("Enter x: "))
-print(x)
+
+
+
 
 
 # End of program
