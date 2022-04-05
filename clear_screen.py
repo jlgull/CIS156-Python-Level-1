@@ -37,13 +37,16 @@ def clear():
 # End of function definitions
 
 
-# print out some text
-print('hello geeks\n'*10)
+# Test if this is being used as a script?
+if __name__ == "__main__":
 
-# sleep for 2 seconds after printing output
-sleep(2)
+    # print out some text
+    print('hello geeks\n'*10)
 
-# now call function we defined above
-clear()
+    # sleep for 2 seconds after printing output
+    sleep(2)
+
+    # now call function we defined above
+    clear()
 
 # End of Program
