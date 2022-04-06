@@ -40,10 +40,9 @@ Sample Output:
 # Import all required options
 #
 # Import system and name from os
-from os import system, name
+from clear_screen import clear
 
-# import sleep to show output for some time period
-from time import sleep
+
 
 # End of import section
 
@@ -76,18 +75,6 @@ Integers numbers:
 # Function definition section of the program
 
 
-def clear():
-    # Define the clear function, which is agnostic to the operating system
-    # being used. In PyCharm you have to sent "Emulate terminal in output console",
-    # which is found under the "Edit run configuration" tab.
-
-    # for windows
-    if name == 'nt':
-        _ = system('cls')
-
-    # for mac and linux(here, os.name is 'posix')
-    else:
-        _ = system('clear')
 
 # End of function definitions
 
@@ -103,7 +90,9 @@ while do_again != "N":
 
     # Main body of the program.
 
+    clear()
 
+    print(dir(clear_screen))
 
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.

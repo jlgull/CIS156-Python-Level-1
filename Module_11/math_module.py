@@ -12,7 +12,6 @@ Generic shell for the CIS156 programs
 
 Ch 11 Programming Assignment, Part B
 
-
 Create a program called math_module.py that uses the math module (https://docs.python.org/3.5/library/math.html
     (Links to an external site.)) to do the following:
 
@@ -29,15 +28,28 @@ Hint: You may find the w3schools (Links to an external site.) math module refere
 #
 # Import all required options
 #
-# Import system and name from os
-from os import system, name
 
-# import sleep to show output for some time period
-from time import sleep
+
+from clear_screen import clear
+
+
+from math import factorial, pow
+
+"""math.factorial(x)
+        Return x factorial as an integer. Raises ValueError if x is not integral or is negative."""
+
+"""math.pow(x, y)
+        Return x raised to the power y. Exceptional cases follow Annex ‘F’ of the C99 standard as far as possible.
+         In particular, pow(1.0, x) and pow(x, 0.0) always return 1.0, even when x is a zero or a NaN (Not a Number). 
+         If both x and y are finite, x is negative, and y is not an integer then pow(x, y) is undefined,
+            and raises ValueError.
+
+        Unlike the built-in ** operator, math.pow() converts both its arguments to type float. 
+         Use ** or the built-in pow() function for computing exact integer powers.
+
+"""
 
 # End of import section
-
-
 
 """
 
@@ -64,26 +76,38 @@ Integers numbers:
 
 """
 
-
-
 # Function definition section of the program
 
-def clear():
-    # Define the clear function, which is agnostic to the operating system
-    # being used. In PyCharm you have to sent "Emulate terminal in output console",
-    # which is found under the "Edit run configuration" tab.
 
-    # for windows
-    if name == 'nt':
-        _ = system('cls')
+def get_data(data_type, allow_neg):
+    # Function to request a numerical data, test for validity and
+    # return the entered data.
+    # data_type     - what data type, integer or floating point.
+    # allow_neg     - Allow negative numbers, Yes or No.
+    while True:
 
-    # for mac and linux(here, os.name is 'posix')
-    else:
-        _ = system('clear')
+        # Setup to request data and convert it to a floating point number,
+        #   also prepare for invalid data type.
+        try:
+            if data_type == "Float":
+                entered_data = float(input(f"Enter your number: "))
+            else:
+                entered_data = int(input(f"Enter your number: "))
+        except ValueError:
+            print(f"Only {data_type} numbers are allowed.")
+            continue
+
+        # Setup to validate that the number is in a valid range.
+
+            # Test that the data is above the lower_limit set above.
+        if allow_neg == "No" and entered_data < 0:
+            print(f"Entered number must be greater than 0.")
+            continue
+        break
+    # Call a function to test entered data.
+    return entered_data
 
 # End of function definitions
-
-
 
 
 # Set the while control value to "Y".
@@ -94,8 +118,49 @@ while do_again != "N":
 
     # Main body of the program.
 
+    # Clear the screen, prior to running the program.
+    clear()
 
-    # The following code as copied from the sum_loop program.
+    # Ask if the user which function, factorial or pow, they would like to run.
+    # Also, validate for the correct response.
+    while True:
+        print("\nWhich function would you like to run.\n"
+              "Enter \"F\" for Factorial or \"P\" for Power.", end=" ")
+        function_request = input().upper()
+        if function_request != "F" and function_request != "P":
+            print("The only valid entries are either an \"F\" or a \"P\".")
+        elif function_request == "F":
+            """ Calculate and output the factorial of the entered number using a function from the math module.
+                    For example, the factorial of 4 is 24. """
+            print("\nEnter the number you would like to calculate the factorial of.")
+            print("The program will then calculate the factorial of the number 1 and then up to the number "
+                  "you enter."
+                  "\nEnter the number, integer, you would like as the highest factorial to be calculated.")
+            print("   There is no limit to the number that you can enter;\n"
+                  "      but be aware that any number larger than 100 will\n"
+                  "      be wider than your screen, take some time, and return a lot of 0's.")
+            number_entry = get_data("Integer", "No")
+
+            # Loop from 1 to the number the user entered.
+            for i in range(1, number_entry+1):
+
+                # Print the results of all the factorials calculated.
+                print(f"\nThe factorial of {i} is {factorial(i):,}.")
+
+            break
+        else:
+            #if function_request == "P":
+            """ Calculate and output the value of the entered number raised to the power of 3 using a 
+                    function from the math module. For example, 4 raised to the power of 3 is 64. """
+            print("\nThe function \"pow\" is being used to find your number raised to the 3rd power.\n"
+                  "   Your number can be either an integer or a floating point number.")
+
+            number_entry = get_data("Float", "Yes")
+
+            print(f"\nYour number, {number_entry}, raised to the 3rd power is ", end='')
+            print(f"{pow(number_entry, 3):,}.")
+            break
+
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.
     while True:
