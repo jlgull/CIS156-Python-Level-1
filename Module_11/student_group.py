@@ -39,9 +39,24 @@ Sample Output:
 #
 # Import all required options
 #
-# Import system and name from os
+# Import clear screen.
 from clear_screen import clear
 
+# List of 2000 baby names from the 2020 SSN database.
+#   Found as a JSON file and converted to Python lists.
+from baby_boy_names import *
+from baby_girl_names import *
+
+# From the Random module, import selected tools.
+
+from random import sample, randint
+
+"""  random.sample(population, k)
+        Return a k length list of unique elements chosen from the population sequence or set. 
+        Used for random sampling without replacement.  """
+
+"""  random.randint(a, b)
+        Return a random integer N such that a <= N <= b. Alias for randrange(a, b+1).  """
 
 
 # End of import section
@@ -75,12 +90,7 @@ Integers numbers:
 # Function definition section of the program
 
 
-
 # End of function definitions
-
-
-
-
 
 # Set the while control value to "Y".
 do_again = "Y"
@@ -92,8 +102,59 @@ while do_again != "N":
 
     clear()
 
-    print(dir(clear_screen))
+    print(f"There are {len(boys_list)} name in the boys list.")
 
+    print(f"There are {len(girls_list)} name in the girls list.")
+
+    all_names = boys_list + girls_list
+
+    all_names_copy = all_names[:]
+
+    all_names_copy.sort()
+
+    print(f"The combined list contains {len(all_names_copy)} boys and girls names.\n")
+
+    # Set the sample size for the list used.
+    sample_size = 20
+
+    short_name_list = sample(all_names_copy, sample_size)
+
+    short_name_list.sort()
+
+    print(f"Here is a randomly selected, sorted list of {sample_size} names, \n{short_name_list}\n"
+          f" from the list of {len(all_names_copy)} names.")
+
+    """
+    Generate a random number appropriate to the number of names in the list.
+    Use the random number to retrieve and print the corresponding name from the list.
+    Repeat until you have output the correct number of students, as input by the user.
+    """
+
+    while True:
+
+        # Setup to request data and convert it to a floating point number,
+        #   also prepare for invalid data type.
+        try:
+            group_count = abs(int(input(f"\nHow many names would you like from the list above? ")))
+        except ValueError:
+            print(f"Only integers are allowed.")
+            continue
+        if group_count > sample_size:
+            print(f"The largest group size is limited to {sample_size}.")
+            continue
+        break
+
+    # Create an empty list for the randomly selected small group.
+    small_group = []
+
+    for s in range(0, group_count):
+        selected_name = short_name_list[randint(0, group_count)]
+        short_name_list.remove(selected_name)
+        small_group.append(selected_name)
+
+    small_group.sort(reverse=True)
+    print(f"\nHere are the {group_count} names selected from the list of {sample_size} and sorted in reverse order: "
+          f"\n{small_group}")
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.
     while True:

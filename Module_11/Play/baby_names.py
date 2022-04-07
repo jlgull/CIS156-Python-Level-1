@@ -30,7 +30,6 @@ for i in range(0, 2000, 100):
     print(i, all_names_copy[i])
 
 
-# print((boys_list))
 
 # Print the data of dictionary
 
