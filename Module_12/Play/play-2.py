@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 #
 # Author: Jonathan Heard
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1

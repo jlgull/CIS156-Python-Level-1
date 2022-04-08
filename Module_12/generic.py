@@ -1,4 +1,4 @@
-#! / bin / python3
+#!/usr/bin/env python3
 #
 # Author: Jonathan Heard
 # Instructor: Tim McMichael
@@ -20,10 +20,8 @@ Copy instructions from Canvas, change the program name as required.
 # Import all required options
 #
 # Import system and name from os
-from os import system, name
+from clear_screen import clear
 
-# import sleep to show output for some time period
-from time import sleep
 
 # End of import section
 
@@ -58,19 +56,6 @@ Integers numbers:
 #
 
 
-def clear():
-    # Define the clear function, which is agnostic to the operating system
-    # being used. In PyCharm you have to sent "Emulate terminal in output console",
-    # which is found under the "Edit run configuration" tab.
-
-    # for windows
-    if name == 'nt':
-        _ = system('cls')
-
-    # for mac and linux(here, os.name is 'posix')
-    else:
-        _ = system('clear')
-
 # End of function definitions
 
 
@@ -82,7 +67,7 @@ do_again = "Y"
 while do_again != "N":
 
     # Main body of the program.
-
+    clear()
 
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.
