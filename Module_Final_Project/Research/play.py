@@ -15,7 +15,10 @@ import json
 # Define functions
 #
 
-with open("simple_baby_names.json", "r") as names_json:
+sample_size = int(input("Enter sample size: "))
+
+
+with open("baby_names.json", "r") as names_json:
 
     # json data in now in a dictionary
     names = json.load(names_json)
@@ -24,14 +27,17 @@ with open("simple_baby_names.json", "r") as names_json:
     b = names["boys"]
     g = names["girls"]
 
-    print(f"Data from the year {y}:\nfirst 30 boys names, {b[:30]}\nfirst 30 girls names, {g[:30]}\n")
+    print(f"Data from the year {y}:\nfirst {sample_size} boys names, {b[:sample_size]}\nfirst {sample_size} girls names, {g[:sample_size]}\n")
 
-    t = b[:30] + g[:30]
-
-    t.sort()
+    t = b[:sample_size] + g[:sample_size]
 
 
-    print(f"Names from the combined list, sorted:\n{t[:60]}")
+    print(len(t))
+
+    # t.sort()
+
+
+    print(f"Names from the combined list, sorted:\n{sorted(t[:sample_size*2])}")
 
     """
     print(names,"\n")
@@ -71,7 +77,7 @@ print(girls_names, boys_names)
 all_names = girls_names + boys_names
 
 print(all_names)
-"""
+
     all_names = []
 
     for value in names.values():
@@ -82,7 +88,7 @@ print(all_names)
 
 print(f"\nJason's list, sorted in reverse:\n{sorted(all_names, reverse=True)}")
 
-
+"""
 
     #print(girls_names)
 # End of Program

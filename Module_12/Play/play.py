@@ -31,15 +31,7 @@ print(lines)
 for line in lines:
     print(line)
 
-print()
-
-pi2 = 355 / 113
-
-pi_delta = ((pi2 / pi) -1 ) * pow(10, 9)
 
 
-print(f"Pi from math:   {pi}")
-print(f"Pi2 from local: {pi2}")
-print(f"Pi2/Pi error in ppb: {pi_delta}")
 
 # End of program
