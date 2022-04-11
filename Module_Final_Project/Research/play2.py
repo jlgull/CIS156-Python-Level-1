@@ -8,13 +8,23 @@
 #
 # Import all required options
 #
+import json
+
 
 #
 # Define functions
 #
 
+array = '{"fruits": ["apple", "banana", "orange"]}'
+        #' "stuff": ["toys", "candy", "shoes"]}'
 
+data = json.loads(array)
 
+print(data,"\n")
 
+for k in data:
+    print(k)
+# the print displays:
+# [u'apple', u'banana', u'orange']
 
 # End of Program

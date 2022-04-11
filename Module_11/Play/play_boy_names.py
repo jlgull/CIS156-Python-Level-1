@@ -9,7 +9,7 @@
 # Import all required options
 #
 
-from clear_screen import clear
+from kennedy_13 import clear
 
 from Module_11.baby_boy_names import *
 

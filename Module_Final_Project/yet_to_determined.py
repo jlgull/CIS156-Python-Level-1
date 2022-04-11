@@ -58,7 +58,7 @@ Your project must demonstrate AT LEAST ONE of the following elective skills/conc
 # Import all required options
 #
 # Import system and name from os
-from clear_screen import clear
+from kennedy_13 import clear
 
 
 # End of import section

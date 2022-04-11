@@ -20,7 +20,7 @@ Copy instructions from Canvas, change the program name as required.
 # Import all required options
 #
 # Import system and name from os
-from clear_screen import clear
+from kennedy_13 import clear
 
 
 # End of import section

@@ -5,14 +5,20 @@
 # Course: CIS156, Section 36323
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
 #
-# Program name: math_module_1st_try.py
+# Program name: read_file.py
 #
 """
 Generic shell for the CIS156 programs
 
-Ch XX Programming Assignment, Part ??
+Ch 12 Programming Assignment, Part A
 
-Copy instructions from Canvas, change the program name as required.
+Create a program called read_file.py that reads the address.txt file linked below into a list.
+Then, prompt the user to enter a line number, and display that line from the file.
+Keep repeating until the user decides to exit.
+
+File to be used for testing: address.txt Download address.txt .
+Note: With most IDEs, you will need to add this file to your project; you can usually drag and drop
+    the file to do so.
 
 
 """
@@ -20,10 +26,8 @@ Copy instructions from Canvas, change the program name as required.
 # Import all required options
 #
 # Import system and name from os
-from os import system, name
+from kennedy_13 import clear
 
-# import sleep to show output for some time period
-from time import sleep
 
 # End of import section
 
@@ -58,19 +62,6 @@ Integers numbers:
 #
 
 
-def clear():
-    # Define the clear function, which is agnostic to the operating system
-    # being used. In PyCharm you have to sent "Emulate terminal in output console",
-    # which is found under the "Edit run configuration" tab.
-
-    # for windows
-    if name == 'nt':
-        _ = system('cls')
-
-    # for mac and linux(here, os.name is 'posix')
-    else:
-        _ = system('clear')
-
 # End of function definitions
 
 
@@ -82,7 +73,7 @@ do_again = "Y"
 while do_again != "N":
 
     # Main body of the program.
-
+    clear()
 
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.

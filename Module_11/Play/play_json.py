@@ -9,7 +9,7 @@
 # Import all required options
 #
 
-from clear_screen import clear
+from kennedy_13 import clear
 
 # importing the module
 from json import load
@@ -28,7 +28,7 @@ from json import load
 
 
 # Opening JSON file
-with open('baby_names.json') as json_file:
+with open('../../Module_Final_Project/Research/baby_names.json') as json_file:
     data = load(json_file)
 
     clear()

@@ -30,7 +30,7 @@ Hint: You may find the w3schools (Links to an external site.) math module refere
 #
 
 
-from clear_screen import clear
+from kennedy_13 import clear
 
 
 from math import factorial, pow

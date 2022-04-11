@@ -40,7 +40,7 @@ Sample Output:
 # Import all required options
 #
 # Import clear screen.
-from clear_screen import clear
+from kennedy_13 import clear
 
 # List of 2000 baby names from the 2020 SSN database.
 #   Found as a JSON file and converted to Python lists.

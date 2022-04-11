@@ -1,8 +1,12 @@
-#!/etc/python3
+#!/usr/bin/env python3
 #
 # Author: Jonathan Heard
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
-# copied out of Chapter 5.9 to practice and change.
+#
+# This file, kennedy_13.py will be a basic toolbox for projects to come.
+#    As new tools are developed, they will be added here.
+#    The first tool here is the clear screen module.
+#    Others will be added and fine-tuned as the course moves along.
 #
 
 #

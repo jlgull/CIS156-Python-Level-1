@@ -5,7 +5,7 @@
 
 # importing the module
 
-from clear_screen import clear
+from kennedy_13 import clear
 
 from baby_boy_names import *
 

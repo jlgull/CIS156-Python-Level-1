@@ -40,9 +40,22 @@ for id in employees:
 
 """
 music = {
-    'Pink Floyd': {'album': 'The Dark Side of the Moon', 'songs': ['Speak to Me', 'Breathe', 'On the Run', 'Money'], 'year': 1973, 'platinum': True },
-        {'album:': 'The Wall', 'songs': ['Another Brick in the Wall', 'Mother', 'Hey you'], 'year': 1979, 'platinum': True },
-    'Justin Bieber': {'album': 'My World', 'songs': ['One Time', 'Bigger', 'Love Me'], 'year': 2010, 'platinum': True}
+    'Pink Floyd':
+        { 'album': 'The Dark Side of the Moon', {
+                    'songs': ['Speak to Me', 'Breathe', 'On the Run', 'Money'],
+                   'year': 1973, 'platinum': True
+                    },
+        { 'album:': 'The Wall', {
+                     'songs': ['Another Brick in the Wall', 'Mother', 'Hey you'],
+                    'year': 1979, 'platinum': True
+                    }
+        },
+    'Justin Bieber':
+        { 'album': 'My World', {
+                    'songs': ['One Time', 'Bigger', 'Love Me'],
+                    'year': 2010, 'platinum': True
+                    }
+                }
 
 
 # First, add a command that adds an artist name to the music dictionary.

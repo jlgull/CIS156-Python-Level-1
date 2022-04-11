@@ -5,14 +5,35 @@
 # Course: CIS156, Section 36323
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
 #
-# Program name: math_module_1st_try.py
+# Program name: envelope.py
 #
 """
 Generic shell for the CIS156 programs
 
-Ch XX Programming Assignment, Part ??
+Ch 12 Programming Assignment, Part B
 
-Copy instructions from Canvas, change the program name as required.
+Create a program called envelope.py that prompts the user to input the following,
+    storing each in a separate variable:
+
+    Recipient's name
+    Address
+    City
+    State
+    Zip Code
+
+Then, the program should create a new file called envelope.txt with a rudimentary mailing envelope:
+    Your name and return address at the top-left followed by the recipient's name and address.
+
+Sample output file:
+
+Jose Pena
+123 Main St.
+Avondale, AZ 85392
+
+
+          Yuri Davidson
+          456 Pine Ave
+          Litchfield Park, AZ 85393
 
 
 """
@@ -20,7 +41,7 @@ Copy instructions from Canvas, change the program name as required.
 # Import all required options
 #
 # Import system and name from os
-from clear_screen import clear
+from kennedy_13 import clear
 
 
 # End of import section
