@@ -15,7 +15,7 @@ import json
 # Define functions
 #
 
-with open("baby_names.json", "r") as names_json:
+with open("simple_baby_names.json", "r") as names_json:
 
     # json data in now in a dictionary
     names = json.load(names_json)
@@ -28,9 +28,13 @@ with open("baby_names.json", "r") as names_json:
 
     t = b[:30] + g[:30]
 
-    print(f"Names from the combined list:\n{t[:60]}")
+    t.sort()
 
-    """print(names,"\n")
+
+    print(f"Names from the combined list, sorted:\n{t[:60]}")
+
+    """
+    print(names,"\n")
 
     print(f"Type of 'names' is {type(names)}.\n")
 
@@ -67,8 +71,18 @@ print(girls_names, boys_names)
 all_names = girls_names + boys_names
 
 print(all_names)
+"""
+    all_names = []
+
+    for value in names.values():
+        if isinstance(value, list):
+            all_names += value
+
+# all_names.sort(reverse=True)
+
+print(f"\nJason's list, sorted in reverse:\n{sorted(all_names, reverse=True)}")
+
 
 
     #print(girls_names)
-"""
 # End of Program
