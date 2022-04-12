@@ -15,15 +15,19 @@ import json
 # Define functions
 #
 
-array = '{"fruits": ["apple", "banana", "orange"]}'
-        #' "stuff": ["toys", "candy", "shoes"]}'
+array = '{"fruits": ["apple", "banana", "orange"], \
+         "stuff": ["toys", "candy", "shoes"]}'
 
 data = json.loads(array)
 
 print(data,"\n")
 
 for k in data:
-    print(k)
+    t = data[k]
+    for v in t:
+        print(k,v)
+
+
 # the print displays:
 # [u'apple', u'banana', u'orange']
 

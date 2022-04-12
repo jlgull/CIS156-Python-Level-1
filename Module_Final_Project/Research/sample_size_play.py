@@ -18,7 +18,7 @@ import json
 sample_size = int(input("Enter sample size: "))
 
 
-with open("baby_names.json", "r") as names_json:
+with open("2020_baby_names.json", "r") as names_json:
 
     # json data in now in a dictionary
     names = json.load(names_json)
@@ -27,17 +27,13 @@ with open("baby_names.json", "r") as names_json:
     b = names["boys"]
     g = names["girls"]
 
-    print(f"Data from the year {y}:\nfirst {sample_size} boys names, {b[:sample_size]}\nfirst {sample_size} girls names, {g[:sample_size]}\n")
+    print(f"\nData from the year {y}:\nfirst {sample_size} boys names, {b[:sample_size]}\n"
+          f"first {sample_size} girls names, {g[:sample_size]}\n")
 
     t = b[:sample_size] + g[:sample_size]
 
 
-    print(len(t))
-
-    # t.sort()
-
-
-    print(f"Names from the combined list, sorted:\n{sorted(t[:sample_size*2])}")
+    print(f"{len(t)} names from the combined list, sorted:\n{sorted(t[:sample_size*2])}")
 
     """
     print(names,"\n")

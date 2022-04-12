@@ -28,7 +28,7 @@ from json import load
 
 
 # Opening JSON file
-with open('../../Module_Final_Project/Research/baby_names.json') as json_file:
+with open('2020_baby_names.json') as json_file:
     data = load(json_file)
 
     clear()
