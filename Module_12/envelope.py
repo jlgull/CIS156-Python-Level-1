@@ -48,7 +48,6 @@ from kennedy_13 import clear, get_data
 
 
 """
-
 Variable List
 
 Since there are no arrays in Python, so I used a list. Here is information about the (array) List.
@@ -56,10 +55,15 @@ List info:
     return_address      -   The return address for the letter to be sent, set to the author's address.
     gathered_address    -   The address entered for the outgoing letter.
     outgoing_address    -   The address to be printed on the outgoing letter.
+    
+External file names:
+    envelope.txt        -   Text file to receive the completed address.
 
 String variables:
     In main program:
-
+        do_again        -   Flag used for repeating the program.
+        printed_address -   File handler name for writing out to the text file.
+        
     In function:
                   
 Floating point numbers:
@@ -75,11 +79,11 @@ Integers numbers:
 """
 
 #
-# Function definition section of the program
+# Function definition section of the program.
 #
-
-
+#
 # End of function definitions
+#
 
 # Set the while control value to "Y".
 do_again = "Y"
@@ -87,7 +91,7 @@ do_again = "Y"
 # Establish the return_address list.
 return_address = list()
 
-# Establish the return address.
+# Establish the return address, not my current address.
 return_address.append("Jonathan Heard")
 return_address.append("10717 W. Flower Ave.")
 return_address.append("Avondale, AZ")
@@ -106,18 +110,20 @@ while do_again != "N":
     # Explain the purpose of the program.
     print(f"This program will collect an address you would like to use, to mail a letter.\n"
           f"Then the address you entered will be written to a file for future printing.\n"
-          f"My address, as the author of the program, will be set at the return address.\n")
+          f"My address, as the author of the program, will be set as the return address.\n")
 
-    # Prompts the user to input the following, storing each in a separate variable:
-    #     Recipient's name
-    #     Address
-    #     City
-    #     State
-    #     Zip Code
+    """
+    Prompts the user to input the following, storing each in a separate variable:
+         Recipient's name
+         Address
+         City
+         State
+         Zip Code
+    """
     # Gather the outgoing address information.
     gathered_address.append(get_data("s", "Enter the Recipient's name: "))
     gathered_address.append(get_data("s", "Enter the Recipient's Address: "))
-    gathered_address.append(get_data("s", "Enter the Recipient's City "))
+    gathered_address.append(get_data("s", "Enter the Recipient's City: "))
     gathered_address.append(get_data("s", "Enter the Recipient's State: "))
     gathered_address.append(get_data("s", "Enter the Recipient's zip code: "))
 
@@ -127,33 +133,38 @@ while do_again != "N":
     outgoing_address.append(gathered_address[2].title() + ", " + gathered_address[3].upper())
     outgoing_address.append(gathered_address[4].upper())
 
+    """
+    Then, the program should create a new file called envelope.txt with a rudimentary mailing envelope:
+    Your name and return address at the top-left followed by the recipient's name and address.
+    Set up to write the 2 addresses to a file.
+    """
 
-    # Then, the program should create a new file called envelope.txt with a rudimentary mailing envelope:
-    # Your name and return address at the top-left followed by the recipient's name and address.
-    # Set up to write the 2 addresses to a file.
+    # Open the text file to be the target of the print statements to follow.
+    with open("envelope.txt", "w") as printed_address:
 
-    # Print a blank line above the return address.
-    print()
+        # Print a blank line above the return address.
+        print("", file=printed_address)
 
-    # Print the return address in the Upper left corner of the
-    for t in range(len(return_address)):
-        print(return_address[t])
+        # Print the return address in the top-left corner of the output.
+        for t in range(len(return_address)):
+            print(return_address[t], file=printed_address)
 
-    # Print a blank line between the 2 addresses.
-    print()
+        # Print a blank line between the 2 addresses.
+        print("", file=printed_address)
 
-    # Print the outgoing address 10 spaces in from the left margin.
-    for x in range(len(outgoing_address)):
-        print(" " * 10, outgoing_address[x])
+        # Print the outgoing address 10 spaces in from the left margin.
+        for x in range(len(outgoing_address)):
+            print(" " * 10, outgoing_address[x], file=printed_address)
 
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.
     while True:
-        print("\nWould you like to enter different address? Enter (Y) for yes or (N) for no.", end=" ")
+        print("\nWould you like to enter different address, it will over write the previous entry?\n"
+              " Enter (Y) for yes or (N) for no.", end=" ")
         do_again = input().upper()
         if do_again == "N" or do_again == "Y":
             break
         else:
             print("The only valid entries are either a Y or an N.")
 
-# End of program
+# End of program.
