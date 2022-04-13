@@ -38,19 +38,89 @@ def clear():
     else:
         _ = system('clear')
 
+
+def get_data(type, label):
+    # Function to request a numerical data, test for validity and
+    # return the entered data.
+    # f_i   - what type of data is requested, (f) for floating point data,
+    #         (i) for integer data or (s) for string data.
+    while True:
+
+        if type == "f":
+            # Setup to request data and convert it to a floating point number,
+            #   also prepare for invalid data type.
+            try:
+                entered_data = float(input(label))
+            except ValueError:
+                print(f"Only numbers are allowed.")
+                continue
+            break
+
+        elif type == "i":
+            # Setup to request data and convert it to an integer,
+            #   also prepare for invalid data type.
+            try:
+                entered_data = int(input(label))
+            except ValueError:
+                print(f"Only numbers are allowed.")
+                continue
+            break
+
+        else:
+            # Setup to request string data,
+            #   also prepare for invalid data type.
+            try:
+                entered_data = input(label)
+            except ValueError:
+                print(f"Only numbers are allowed.")
+                continue
+            break
+
+    return entered_data
+
 # End of function definitions
 
 
+# This is set up to all for testing, during development of the
+#   tools in the package.
 # Test if this is being used as a script?
 if __name__ == "__main__":
 
-    # print out some text
-    print('hello geeks\n'*10)
+    # Set the while control value to "Y".
+    do_again = "Y"
 
-    # sleep for 2 seconds after printing output
-    sleep(2)
+    # Use while, regarding the desire to re-run the program.
+    while do_again != "N":
 
-    # now call function we defined above
-    clear()
+        # print out some text
+        # print('hello geeks\n'*10)
+
+        print("Requesting floating point data")
+        data = get_data("f", "Enter floating point data: ")
+        print(data)
+
+        print("Requesting integer data")
+        data = get_data("i", "Enter integer data: ")
+        print(data)
+
+        print("Requesting string data")
+        data = get_data("s", "Enter required string: ")
+        print(data)
+
+        # sleep for 2 seconds after printing output
+        sleep(2)
+
+        # now call function we defined above
+        clear()
+
+        # Ask if the user would like to repeat the program.
+        # Also, validate for the correct response.
+        while True:
+            print("\nWould you like to run the program again? Enter (Y) for yes or (N) for no.", end=" ")
+            do_again = input().upper()
+            if do_again == "N" or do_again == "Y":
+                break
+            else:
+                print("The only valid entries are either a Y or an N.")
 
 # End of Program
