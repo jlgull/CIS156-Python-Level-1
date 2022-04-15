@@ -44,15 +44,27 @@ while True:
         girls_names = names["girls"]
 
         print()
-        sample_size = get_data("i", "Enter sample size: ")
+        while True:
 
-        print(f"\nData from the year {year}.")
-        print(f"\nFirst {sample_size} boys names are:\n {boys_names[:sample_size]}")
-        print(f"\nFirst {sample_size} girls names are:\n {girls_names[:sample_size]}\n")
+            print(f"There are {len(boys_names)} names for boys and girls in {year}'s data.\n"
+                  f"The sample size will determine how many names are randomly chosen from each group.")
+            sample_size = get_data("i", "Enter requested sample size: ")
+
+            if sample_size > len(boys_names):
+                print(f"Your choice, {sample_size}, is greater than {len(boys_names)}, pick again. \n")
+                continue
+            else:
+                break
+
+
+
+        print(f"\nData from the year: {year}.")
+        print(f"\nHere are the {sample_size} boys names:\n {boys_names[:sample_size]}")
+        print(f"\nHere are the {sample_size} girls names:\n {girls_names[:sample_size]}\n")
 
         combined_names_list = boys_names[:sample_size] + girls_names[:sample_size]
 
-        print(f"There are {len(combined_names_list)} names in the combined list, in a sorted "
+        print(f"Finally here are the {len(combined_names_list)} names in a combined list, in a sorted "
               f"order:\n{sorted(combined_names_list[:sample_size * 2])}")
 
         break

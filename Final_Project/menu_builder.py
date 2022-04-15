@@ -26,7 +26,7 @@ def menu():
                         1:  "2000 Data",
                         2:  "2010 Data",
                         3:  "2020 Data",
-                        4:  "Exiting"
+                        4:  "Ending the program"
                      }
 
         for i in range(1, len(menu_items)+1):
@@ -37,7 +37,8 @@ def menu():
         choice = get_data("i", "Select which year's data you would like to analyze. ")
 
         if choice > len(menu_items):
-            print(f"Your choice, {choice}, is greater than {len(menu_items)}, pick again. \n")
+            print(f"Your choice, {choice}, is greater than the {len(menu_items)} options available,"
+                  f" please pick again. \n")
             continue
         return choice
 
