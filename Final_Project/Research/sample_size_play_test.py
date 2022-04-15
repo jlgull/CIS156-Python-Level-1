@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 #
 # Author: Jonathan Heard
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
@@ -10,30 +10,44 @@
 #
 import json
 
+from menu_builder import menu
 
 #
 # Define functions
 #
+while True:
 
-sample_size = int(input("Enter sample size: "))
-
-
-with open("2020_baby_names.json", "r") as names_json:
-
-    # json data in now in a dictionary
-    names = json.load(names_json)
-
-    y = names["year"]
-    b = names["boys"]
-    g = names["girls"]
-
-    print(f"\nData from the year {y}:\nfirst {sample_size} boys names, {b[:sample_size]}\n"
-          f"first {sample_size} girls names, {g[:sample_size]}\n")
-
-    t = b[:sample_size] + g[:sample_size]
+    choice = menu()
 
 
-    print(f"{len(t)} names from the combined list, sorted:\n{sorted(t[:sample_size*2])}")
+
+    print(f"Your chose: {choice}")
+
+
+
+
+    sample_size = int(input("Enter sample size: "))
+
+
+
+    with open("../2000_baby_name.json", "r") as names_json:
+
+        # json data in now in a dictionary
+        names = json.load(names_json)
+
+        y = names["year"]
+        b = names["boys"]
+        g = names["girls"]
+
+        print(f"\nData from the year {y}:\nfirst {sample_size} boys names, {b[:sample_size]}\n"
+              f"first {sample_size} girls names, {g[:sample_size]}\n")
+
+        t = b[:sample_size] + g[:sample_size]
+
+
+        print(f"{len(t)} names from the combined list, sorted:\n{sorted(t[:sample_size*2])}")
+
+
 
     """
     print(names,"\n")
@@ -86,5 +100,4 @@ print(f"\nJason's list, sorted in reverse:\n{sorted(all_names, reverse=True)}")
 
 """
 
-    #print(girls_names)
 # End of Program
