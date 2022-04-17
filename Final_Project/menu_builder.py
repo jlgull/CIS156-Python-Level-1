@@ -2,26 +2,43 @@
 #
 # Author: Jonathan Heard
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
-# copied out of Chapter 5.9 to practice and change.
+#
+#This module is used to build the menu for the selection of the data to be analyzed.
 #
 
+
 #
-# Import all required options
+# Import all required options.
 #
 
 from kennedy_13 import clear, get_data
 
-
 #
+# End of Import section.
+
+"""
+
+Variable List
+
+List info:
+    menu_items      - List to hold menu items.
+
+Integers numbers: 
+    In main program:
+        picked_choice   - Item picked from the menu list.
+        year_choice     - The number being returned to the calling program.
+
+"""
+
+
 # Define functions
 #
 # Main Menu module for CIS156 Final Project
 def menu():
 
-    # Define the menu items.
-
     while True:
 
+        # Define the menu items.
         menu_items = {
                         1:  "2000 Data",
                         2:  "2010 Data",
@@ -29,25 +46,34 @@ def menu():
                         4:  "Ending the program"
                      }
 
+        # Print out the Menu items.
         for i in range(1, len(menu_items)+1):
             print(f"Select item ({i}) for {menu_items[i]}")
 
+        # Print a blank line prior to gathering the choice selection.
         print()
 
-        choice = get_data("i", "Select which year's data you would like to analyze. ")
+        # Gather the selection for which data set to analyze.
+        picked_choice = get_data("i", "Select which year's data you would like to analyze. ")
 
-        if choice > len(menu_items):
-            print(f"Your choice, {choice}, is greater than the {len(menu_items)} options available,"
+        # Validate that the choice is within the limits of the options.
+        if picked_choice > len(menu_items):
+            print(f"Your choice, {picked_choice}, is greater than the {len(menu_items)} options available,"
                   f" please pick again. \n")
             continue
-        return choice
+        if picked_choice == 1:
+            year_choice = 2000
+        elif picked_choice == 2:
+            year_choice = 2010
+        elif picked_choice == 3:
+            year_choice = 2020
+        else:
+            year_choice = False
+        return year_choice
 
-
-
-
-
+#
 # End of Functions
-
+#
 
 
 # This is set up to allow for testing, during development of the
@@ -55,10 +81,13 @@ def menu():
 # Test if this is being used as a script?
 if __name__ == "__main__":
 
+    # If testing this module, clear screen and print a blank line.
     clear(), print()
 
+    # Call the menu function to test it.
     choice = menu()
 
+    # Print results, as part of the test.
     print(f"You chose: {choice}")
 
 # End of Program

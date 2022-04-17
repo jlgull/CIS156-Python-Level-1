@@ -141,16 +141,17 @@ while do_again != "N":
     clear(), print()
 
     while True:
+        final_list = []
+        print("Please chose the year, to get the popular names for that year.\n")
         choice = menu()
 
-        if choice == 1:
-            picked_data = "2000_baby_name.json"
-        elif choice == 2:
-            picked_data = "2010_baby_name.json"
-        elif choice == 3:
-            picked_data = "2020_baby_name.json"
+
+        if choice:
+            picked_data = str(choice) + "_baby_name.json"
         else:
             exit()
+
+
 
         # Open the selected JSON data file for analysis.
         with open(picked_data, "r") as names_json:
@@ -161,34 +162,85 @@ while do_again != "N":
             year = names["year"]
             boys_names = names["boys"]
             girls_names = names["girls"]
+            combined_names_list = boys_names + girls_names
 
             print()
+        while True:
+
+            print(f"There are a total {len(boys_names)} names for boys and girls in {year}'s data.\n"
+                  f"If you know the gender of your baby, you may select to look only at names for that gender.\n"
+                  f"Please enter \"B\" for just boys names, a \"G\" for just girls name or\n"
+                  f"a \"C\" for a combined list of both boys and girls names.\n")
+            gender_select = get_data("s", "Enter requested gender: ").upper()
+
+            if gender_select != "B" and gender_select != "G" and gender_select != "C":
+                print(f"Your must choose be one of the following \"B\", \"G\" or \"C\", pick again. \n")
+                continue
+            else:
+                break
+
+        if gender_select == "B":
+            label = "boys"
+            chosen_list = boys_names[:]
+        elif gender_select == "G":
+            label = "girls"
+            chosen_list = girls_names[:]
+        else:
+            label = "combined"
+            chosen_list = combined_names_list[:]
+
+        while True:
+
+            print(f"\nFrom the list of {len(chosen_list)}, would you like to find all the names\n"
+                  f"starting with a specific set of letters.\n")
+            yes_or_no = get_data("s", "If so enter \"Y\" for yes or \"N\" for no. ").upper()
+
+            if yes_or_no != "Y" and yes_or_no != "N":
+                print(f"Your must choose \"Y\" or \"N\", pick again. \n")
+                continue
+            else:
+                break
+
+        if yes_or_no == "Y":
+
             while True:
 
-                print(f"There are {len(boys_names)} names for boys and girls in {year}'s data.\n"
-                      f"The sample size will determine how many names are randomly chosen from each group.")
-                sample_size = get_data("i", "Enter requested sample size: ")
+                print(f"Enter the letters, up to 3, that you would like the names to start with\n")
+                select_letters = get_data("s", "Enter the letters now: ").title()
 
-                if sample_size > len(boys_names):
-                    print(f"Your choice, {sample_size}, is greater than {len(boys_names)}, pick again. \n")
+                if len(select_letters) > 3:
+                    print(f"Your choice {select_letters} has more that 3 letter, pick again. \n")
                     continue
                 else:
                     break
 
-            boys_names_sample = sample(boys_names, sample_size)
-            girls_names_sample = sample(girls_names, sample_size)
+            for x in chosen_list:
+                if not x.startswith(select_letters):
+                    continue
+                final_list.append(x)
+            print(f"\nData from the year: {year}.")
+            print(f"Here are the {len(final_list)} {label} names starting with \"{select_letters}\", sorted:\n "
+                  f"{sorted(final_list)}")
 
-            combined_names_list = boys_names_sample + girls_names_sample
+        else:
+
+            while True:
+
+                print(f"\nThere are {len(chosen_list)} {label} names ready for your review in the {year}'s data.\n"
+                      f"The sample size will determine how many names are randomly chosen for your review.")
+                sample_size = get_data("i", "Enter requested sample size: ")
+
+                if sample_size > len(chosen_list):
+                    print(f"Your choice, {sample_size}, is greater than {len(chosen_list)}, pick again. \n")
+                    continue
+                else:
+                    break
+
+            final_list = sample(chosen_list, sample_size)
 
             print(f"\nData from the year: {year}.")
-            print(f"\nHere are the {sample_size} randomly selected boys names:\n {boys_names_sample}")
-            print(f"\nHere are the {sample_size} randomly selected girls names:\n {girls_names_sample}\n")
-
-
-            print(f"Finally here are the {len(combined_names_list)} names in a combined list, in a sorted "
-                  f"order:\n{sorted(combined_names_list)}")
-
-            break
+            print(f"Here are the {sample_size} randomly selected {label} names, sorted:\n {sorted(final_list)}")
+        break
 
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.
