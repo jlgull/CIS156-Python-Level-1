@@ -3,29 +3,68 @@
 # Author: Jonathan Heard
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
 #
-# This file, kennedy_13.py will be a basic toolbox for projects to come.
-#    As new tools are developed, they will be added here.
-#    The first tool here is the clear screen module.
-#    Others will be added and fine-tuned as the course moves along.
+# Program name: kennedy_13.py
 #
+# This is a module written to contain tools used in other programs
+#         to reduce the duplication of code as the designed moved forward.
+#         clear() - Performs a screen clear using the OS module and is intended to by Operating System (OS)
+#                     independent or agnostic.
+#         get_data    - Is used for all data entry requests. It uses try/except to ensure that the data
+#                         entered is the correct type, it also expects a clarifying question or statement.
 
 #
 # Import all required options
 #
-# Import system and name from os
+# Import system and name from the os module.
 from os import system, name
+""" name    - The name of the operating system dependent module imported. 
+                The following names have currently been registered: 'posix', 'nt', 'java'.
+                
+    system  - Execute the command (a string) in a subshell. 
+                This is implemented by calling the Standard C function system(), and has the same 
+                limitations. Changes to sys.stdin, etc. are not reflected in the environment of the
+                executed command. If command generates any output, it will be sent to the interpreter
+                standard output stream. The C standard does not specify the meaning of the return value 
+                of the C function, so the return value of the Python function is system-dependent.            
+                
+"""
 
-# import sleep to show output for some time period
+# Import sleep from the time module.
 from time import sleep
+""" sleep   - Suspend execution of the calling thread for the given number of seconds. 
+                The argument may be a floating point number to indicate a more precise sleep time. 
+                The actual suspension time may be less than that requested because any caught signal 
+                will terminate the sleep() following execution of that signal’s catching routine. 
+                Also, the suspension time may be longer than requested by an arbitrary amount because 
+                of the scheduling of other activity in the system.
+
+"""
 
 # End of import section
+
+"""
+
+Variable List
+
+List info:
+    menu_items      - List to hold menu items.
+
+    In function:
+        entered_data    - Value entered in response to data requested.
+                            This value may be a "Floating Point" number, an "Integer" number
+                            or "String" data.
+        picked_choice   - Item picked from the menu list.
+        year_choice     - The number being returned to the calling program.
+
+"""
+
 
 #
 # Function definition section of the program
 #
 
-
 def clear():
+    # Found on this website: https://www.geeksforgeeks.org/clear-screen-python/
     # Define the clear function, which is agnostic to the operating system
     # being used. In PyCharm you have to sent "Emulate terminal in output console",
     # which is found under the "Edit run configuration" tab.
@@ -42,8 +81,9 @@ def clear():
 def get_data(type, label):
     # Function to request a numerical data, test for validity and
     # return the entered data.
-    # f_i   - what type of data is requested, (f) for floating point data,
-    #         (i) for integer data or (s) for string data.
+    # type      - What type of data is requested, (f) for floating point data,
+    #               (i) for integer data or (s) for string data.
+    # label     - This is the label displayed when requesting data.
     while True:
 
         if type == "f":
@@ -62,7 +102,7 @@ def get_data(type, label):
             try:
                 entered_data = int(input(label))
             except ValueError:
-                print(f"Only numbers are allowed.")
+                print(f"Only Integers are allowed.")
                 continue
             break
 
@@ -72,7 +112,7 @@ def get_data(type, label):
             try:
                 entered_data = input(label)
             except ValueError:
-                print(f"Only numbers are allowed.")
+                print(f"Only string elements are allowed.")
                 continue
             break
 

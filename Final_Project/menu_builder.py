@@ -3,6 +3,9 @@
 # Author: Jonathan Heard
 # Work for CIS156, based on zyBook, CIS156: Python Programming: Level 1
 #
+#
+# Program name: menu_builder.py
+#
 #This module is used to build the menu for the selection of the data to be analyzed.
 #
 
@@ -12,6 +15,13 @@
 #
 
 from kennedy_13 import clear, get_data
+# This is a module containing the following tools, written to reduce the duplication of code as the designed
+#       moved forward.
+#clear() - Performs a screen clear using the OS module and is intended to by Operating System (OS)
+#           independent or agnostic.
+#get_data    - Is used for all data entry requests. It uses try/except to ensure that the data
+#           entered is the correct type, it also expects a clarifying question or statement.
+
 
 #
 # End of Import section.
@@ -48,7 +58,7 @@ def menu():
 
         # Print out the Menu items.
         for i in range(1, len(menu_items)+1):
-            print(f"Select item ({i}) for {menu_items[i]}")
+            print(f"Select ({i}) for {menu_items[i]}")
 
         # Print a blank line prior to gathering the choice selection.
         print()
