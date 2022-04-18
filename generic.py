@@ -20,7 +20,7 @@ Copy instructions from Canvas, change the program name as required.
 # Import all required options
 #
 # Import system and name from os
-from os import system, name
+from kennedy_13 import clear, get_data
 
 # import sleep to show output for some time period
 from time import sleep
@@ -38,6 +38,7 @@ List info:
 
 String variables:
     In main program:
+        do_again    -   Control value for repeating the program.
 
     In function:
                   
@@ -58,25 +59,13 @@ Integers numbers:
 #
 
 
-def clear():
-    # Define the clear function, which is agnostic to the operating system
-    # being used. In PyCharm you have to sent "Emulate terminal in output console",
-    # which is found under the "Edit run configuration" tab.
-
-    # for windows
-    if name == 'nt':
-        _ = system('cls')
-
-    # for mac and linux(here, os.name is 'posix')
-    else:
-        _ = system('clear')
-
 # End of function definitions
 
 
 
 # Set the while control value to "Y".
 do_again = "Y"
+clear()
 
 # Use while, regarding the desire to re-run the program.
 while do_again != "N":
@@ -87,7 +76,7 @@ while do_again != "N":
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.
     while True:
-        print("\nWould you like to calculate the sum of your bills again? Enter (Y) for yes or (N) for no.", end=" ")
+        print("\nWould you like to run this program again? Enter (Y) for yes or (N) for no.", end=" ")
         do_again = input().upper()
         if do_again == "N" or do_again == "Y":
             break
