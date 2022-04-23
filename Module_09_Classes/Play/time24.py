@@ -53,6 +53,7 @@ class Time24:
         # Return new Time24 instance
         return Time24(hrs, mins)
 
+"""
 t1 = input('Enter time1 (hours:minutes): ')
 tokens = t1.split(':')
 time1 = Time24(int(tokens[0]), int(tokens[1]))
@@ -63,6 +64,7 @@ time2 = Time24(int(tokens[0]), int(tokens[1]))
 
 print('Time difference:', time1 - time2)
 
+"""
 
 
 # End of program

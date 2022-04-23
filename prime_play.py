@@ -17,6 +17,8 @@ from kennedy_13 import clear, get_data
                         entered is the type expected and it also expects a clarifying question or statement. 
 """
 
+from time import perf_counter, perf_counter_ns
+
 #
 # Define functions
 #
@@ -33,6 +35,7 @@ while do_again != "N":
 
     prime_numbers.append(1)
     prime_numbers.append(2)
+    counter = 1
 
     # Main body of the program.
 
@@ -42,16 +45,22 @@ while do_again != "N":
 
     end_number = get_data("i", "Enter your number now: ")
 
+    tic = perf_counter()
+
     for outside_loop in range(3, end_number+1, 2):
         for inside_loop in range(3, outside_loop+1, 2):
             if outside_loop % inside_loop == 0 and inside_loop in prime_numbers:
-                not_prime_number.append(outside_loop)
                 break
             if outside_loop % inside_loop == 0 and inside_loop not in prime_numbers:
                 prime_numbers.append(outside_loop)
+                print(outside_loop, end=", ")
+                counter += 1
 
-    print(f"Between 1 and {end_number} there are {len(prime_numbers)} Prime numbers.\n"
-          f"Here is your list:\n{prime_numbers}")
+    toc = perf_counter()
+    print(f"\nRun time is {toc - tic:0.4f} seconds")
+
+    print(f"Between 1 and {end_number} there were {counter} Prime numbers.")
+
 
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.

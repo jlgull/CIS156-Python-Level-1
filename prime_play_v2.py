@@ -17,35 +17,44 @@ from kennedy_13 import clear, get_data
                         entered is the type expected and it also expects a clarifying question or statement. 
 """
 
+from time import perf_counter
+"""
+Found a reference on this website: https://realpython.com/python-timer/
+"""
+
+
 #
 # Define functions
 #
 ''' Python program to print all primes smaller than or equal to
- n using Sieve of Eratosthenes'''
+     n using Sieve of Eratosthenes'''
 
 
 def sieve_of_eratosthenes(n):
     """ Python program to print all primes smaller than or equal to
-     n using Sieve of Eratosthenes"""
-
+     n using """
 
     """
     Create a boolean array "prime[0..n]" and initialize
     all entries it as true. A value in prime[i] will
     finally be false if i is Not a prime, else true.
     """
-    prime = [True for i in range(n + 1)]
+
+    tic = perf_counter()
+
+    prime = [True for i in range( n + 1)]
     counter = 0
-    p = 2
-    while (p * p <= n):
+    p = lower
+    while p * p <= n:
 
         # If prime[p] is not changed, then it is a prime
-        if (prime[p] == True):
+        if prime[p]:
 
             # Update all multiples of p
             for i in range(p ** 2, n + 1, p):
                 prime[i] = False
         p += 1
+
     prime[0] = False
     prime[1] = False
     # Print all prime numbers
@@ -53,9 +62,11 @@ def sieve_of_eratosthenes(n):
         if prime[p]:
             print(p, end=' ')  # Use print(p) for python 3
             counter += 1
+
+    toc = perf_counter()
+
+    print(f"\nRun time is {toc - tic:0.4f} Seconds")
     print(f"\n\nThere are {counter} prime numbers in this list.")
-
-
 
 
 # Set the while control value to "Y".
@@ -68,10 +79,11 @@ while do_again != "N":
 
     # driver program
     if __name__ == '__main__':
-        n = get_data("i", "Enter an integer. ")
+        lower = get_data("i", "Enter lower limiting integer. ")
+        n = get_data("i", "Enter upper limiting integer. ")
 
-        print(f"\nFollowing are the prime numbers smaller", end=' '\
-              f"than or equal to {n}. \n")
+        print(f"\nFollowing are the prime numbers between {lower } and {n}. \n")
+
         sieve_of_eratosthenes(n)
 
     # Ask if the user would like to repeat the program.
