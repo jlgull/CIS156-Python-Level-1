@@ -42,14 +42,15 @@ def clear():
         _ = system('clear')
 
 
-def get_data(type, label):
+def get_data(f_i_s, label):
     # Function to request a numerical data, test for validity and
     # return the entered data.
-    # f_i   - what type of data is requested, (f) for floating point data,
+    # f_i_s   - what type of data is requested, (f) for floating point data,
     #         (i) for integer data or (s) for string data.
+    # label     - This is the label displayed when requesting data.
     while True:
 
-        if type == "f":
+        if f_i_s == "f":
             # Setup to request data and convert it to a floating point number,
             #   also prepare for invalid data type.
             try:
@@ -59,7 +60,7 @@ def get_data(type, label):
                 continue
             break
 
-        elif type == "i":
+        elif f_i_s == "i":
             # Setup to request data and convert it to an integer,
             #   also prepare for invalid data type.
             try:
@@ -75,7 +76,7 @@ def get_data(type, label):
             try:
                 entered_data = input(label)
             except ValueError:
-                print(f"Only numbers are allowed.")
+                print(f"General warning, expecting letters.")
                 continue
             break
 

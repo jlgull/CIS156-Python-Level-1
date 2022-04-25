@@ -16,6 +16,7 @@ clothing = list()
 
 class InventoryTag:
     def __init__(self):
+        self.object = ""
         self.item_id = 0
         self.quantity_remaining = 0
 
@@ -24,13 +25,22 @@ print("sweater", type(sweater))
 # print("sweater", sweater[0])
 
 clothing.append(sweater)
-print("clothing", type(clothing))
+counter = len(clothing) - 1
+print(clothing[counter])
+clothing[counter].item_id = int(input("Enter ID number: "))
+clothing[counter].quantity_remaining = int(input("Number remaining? "))
 
-clothing[0].item_id = int(input())
-clothing[0].quantity_remaining = int(input())
+coat = InventoryTag()
+clothing.append(coat)
+counter = len(clothing) - 1
 
-print(f"ID: {clothing[0].item_id}")
-print(f"Qty: {clothing[0].quantity_remaining}")
+clothing[counter].item_id = int(input("Enter ID number: "))
+clothing[counter].quantity_remaining = int(input("Number remaining? "))
+
+
+for i in range(len(clothing)):
+    print(f"ID item {i}: {clothing[i].item_id}")
+    print(f"Qty {i}: {clothing[i].quantity_remaining}")
 
 
 # End of program
