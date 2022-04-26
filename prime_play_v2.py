@@ -30,7 +30,7 @@ Found a reference on this website: https://realpython.com/python-timer/
      n using Sieve of Eratosthenes'''
 
 
-def sieve_of_eratosthenes(n):
+def sieve_of_eratosthenes(lower_limit, upper_limit):
     """ Python program to print all primes smaller than or equal to
      n using """
 
@@ -42,25 +42,25 @@ def sieve_of_eratosthenes(n):
 
     tic = perf_counter()
 
-    prime = [True for i in range( n + 1)]
+    prime = [True for i in range( upper_limit + 1)]
     counter = 0
-    p = lower
-    while p * p <= n:
+    p = 2
+    while p * p <= upper_limit:
 
         # If prime[p] is not changed, then it is a prime
         if prime[p]:
 
             # Update all multiples of p
-            for i in range(p ** 2, n + 1, p):
+            for i in range(p ** 2, upper_limit + 1, p):
                 prime[i] = False
         p += 1
 
     prime[0] = False
     prime[1] = False
     # Print all prime numbers
-    for p in range(n + 1):
-        if prime[p]:
-            print(p, end=' ')  # Use print(p) for python 3
+    for p in range(upper_limit + 1):
+        if prime[p] and p >= lower_limit:
+            print(p, end=', ')  # Use print(p) for python 3
             counter += 1
 
     toc = perf_counter()
@@ -79,12 +79,14 @@ while do_again != "N":
 
     # driver program
     if __name__ == '__main__':
-        lower = get_data("i", "Enter lower limiting integer. ")
-        n = get_data("i", "Enter upper limiting integer. ")
+        print(f"\nThis program will find all the prime numbers between the two (2) numbers you enter.")
 
-        print(f"\nFollowing are the prime numbers between {lower } and {n}. \n")
+        lower_limit = get_data("i", "Enter lower limiting integer now: ")
+        upper_limit = get_data("i", "Enter upper limiting integer now: ")
 
-        sieve_of_eratosthenes(n)
+        print(f"\nFollowing are the prime numbers between {lower_limit } and {upper_limit}. \n")
+
+        sieve_of_eratosthenes(lower_limit, upper_limit)
 
     # Ask if the user would like to repeat the program.
     # Also, validate for the correct response.

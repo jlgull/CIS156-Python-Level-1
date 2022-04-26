@@ -41,13 +41,11 @@ from kennedy_13 import clear, get_data
 """
 
 from datetime import date
-
 """ 
     This module will be used to deliver today's day when needed.
 """
 
 from dateutil.relativedelta import *
-
 """
     This module will be used to calculate the age of the pet, when requested for 
     any print or display purposes.
@@ -103,8 +101,16 @@ class Pet:
     def __init__(self, pet_type):
         self.type = pet_type
         self.name = get_data("s", f"Enter your {self.type}'s name. ")
-        self.birth_day = date(int(input("Enter birth year: ")), int(input("Enter birth month: ")),
-                              int(input("Enter birth day: ")))
+
+        # Using try-except to ensure date entry values are valid.
+        while True:
+            try:
+                self.birth_day = date(int(input("Enter birth year: ")), int(input("Enter birth month: ")),
+                                      int(input("Enter birth day: ")))
+            except ValueError:
+                print("Only valid numbers are allowed for months or days.")
+                continue
+            break
         self.gender = get_data("s", "Is your pet, Male or Female? ").upper()
 
     def info_pet(self):
@@ -134,6 +140,7 @@ class Pet:
 """
 
 
+# Create the Cat class.
 class Cat(Pet):
     def __init__(self):
         Pet.__init__(self, "Cat")
@@ -150,6 +157,7 @@ class Cat(Pet):
               f"{self.fav_food.title()} food.")
 
 
+# Create the Dog class.
 class Dog(Pet):
     def __init__(self):
         Pet.__init__(self, "Dog")
@@ -165,12 +173,13 @@ class Dog(Pet):
         print(f"In addition, {self.name.title()} is a {self.breed.title()} breed, "
               f"who is {self.color.title()}.")
 
+# End of class definitions.
 
-# End of function definitions
 
 # Set the while control value to "Y".
 do_again = "Y"
 
+# Establish the variable to hold the various pets created using the Cat and Dog classes.
 pet_list = list()
 
 # Use while, regarding the desire to re-run the program.
@@ -180,7 +189,6 @@ while do_again != "N":
     print()
 
     # Main body of the program.
-
     """
         Finally, demonstrate that both derived classes work by creating at least one instance of each and
             showing off their fields and functions.
@@ -199,12 +207,18 @@ while do_again != "N":
 
     # Base menu used to create pet records and report out the data saved.
     while True:
+
+        # Build a cat entry, based on the entry of a "c".
         if command == "c":
             pet_list.append(Cat())
             break
+
+        # Build a dog entry, based on the entry of a "d".
         elif command == "d":
             pet_list.append(Dog())
             break
+
+        # Print a list of the entered pets, based on the entry of a "l".
         elif command == "l":
             for pet in pet_list:
                 if pet.type == "Cat":
@@ -212,6 +226,8 @@ while do_again != "N":
                 else:
                     print(pet.info_dog())
             break
+
+        # Execute the speak method for all entered pets, based on the entry of a "s".
         elif command == "s":
             for pet in pet_list:
                 if pet.type == "Cat":
@@ -219,6 +235,8 @@ while do_again != "N":
                 else:
                     print(pet.speak_dog())
             break
+
+        # Quit, based on the entry of a "q".
         elif command == "q":
             break
         else:

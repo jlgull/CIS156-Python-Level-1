@@ -30,8 +30,8 @@ from kennedy_13 import clear, get_data
 
 Variable List
 
-List info:
-    menu_items      - List to hold menu items.
+Dictionary info:
+    menu_items      -   Dictionary to hold menu items.
 
 Integers numbers: 
     In main program:
