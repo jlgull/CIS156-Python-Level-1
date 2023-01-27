@@ -14,8 +14,6 @@
 #
 # Import all required options
 #
-# Import system and name from os
-from os import system, name
 
 # import sleep to show output for some time period
 from time import sleep
@@ -28,18 +26,28 @@ from time import sleep
 
 
 def clear():
+    # Import system and name from the os module.
+
+    from os import system, name
+
+    """ name    - The name of the operating system dependent module imported. 
+                    The following names have currently been registered: 'posix', 'nt', 'java'.
+
+        system  - Execute the command (a string) in a subshell. 
+                    This is implemented by calling the Standard C function system(), and has the same 
+                    limitations. Changes to sys.stdin, etc. are not reflected in the environment of the
+                    executed command. If command generates any output, it will be sent to the interpreter
+                    standard output stream. The C standard does not specify the meaning of the return value 
+                    of the C function, so the return value of the Python function is system-dependent.            
+    """
+
+    # Found on this website: https://www.geeksforgeeks.org/clear-screen-python/
     # Define the clear function, which is agnostic to the operating system
     # being used. In PyCharm you have to sent "Emulate terminal in output console",
     # which is found under the "Edit run configuration" tab.
-    # The clear() module came from https://www.geeksforgeeks.org/clear-screen-python/
 
-    # for windows
-    if name == 'nt':
-        _ = system('cls')
-
-    # for mac and linux(here, os.name is 'posix')
-    else:
-        _ = system('clear')
+    # If Windows, cls is used, else clear (for Mac and Linux)
+    (system('cls')) if name == 'nt' else (system('clear'))
 
 
 def get_data(f_i_s, label):

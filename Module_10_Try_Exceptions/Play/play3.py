@@ -29,7 +29,7 @@ while user_input != 'q':
     
 
 
-user_input = input("Enter any key ('q' to quit): ")
+    user_input = input("Enter any key to continue or 'q' to quit: ")
 
 
 

@@ -14,7 +14,7 @@
 #
 
 class Time24:
-    def __init__(self, hours, minutes):
+    def __init__(self, hours = 0, minutes = 0):
         self.hours = hours
         self.minutes = minutes
 
@@ -53,18 +53,27 @@ class Time24:
         # Return new Time24 instance
         return Time24(hrs, mins)
 
-"""
+
+time0 = Time24()
+
+print(time0)
+
+
 t1 = input('Enter time1 (hours:minutes): ')
 tokens = t1.split(':')
 time1 = Time24(int(tokens[0]), int(tokens[1]))
+
+print(time1)
 
 t2 = input('Enter time2 (hours:minutes): ')
 tokens = t2.split(':')
 time2 = Time24(int(tokens[0]), int(tokens[1]))
 
+print(time2)
+
 print('Time difference:', time1 - time2)
 
-"""
+
 
 
 # End of program
